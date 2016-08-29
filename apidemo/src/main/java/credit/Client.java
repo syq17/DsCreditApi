@@ -42,6 +42,14 @@ public class Client {
     }
 
 
+    private static void taskRequest() throws Exception{
+
+    }
+
+
+
+
+
     /**
      * linkface 带文件上传的接口请求示例
      *
@@ -54,6 +62,8 @@ public class Client {
 
     public static void main(String[] args) throws Exception{
         apiRequest();
+        apiLinkfaceRequest();
+        taskRequest();
     }
 
 
