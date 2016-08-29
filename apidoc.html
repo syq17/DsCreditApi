@@ -268,7 +268,7 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
-<pre class="prettyprint"><code class=" hljs bash">返回参数：
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
     <span class="hljs-string">"res"</span>:{
@@ -278,6 +278,396 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
         <span class="hljs-string">"province"</span>: <span class="hljs-string">"210000"</span>,
         <span class="hljs-string">"cityname"</span>: <span class="hljs-string">"营口"</span>,
         <span class="hljs-string">"city"</span>: <span class="hljs-string">"210800"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<h4 id="有盾网贷黑名单查询"><i class="icon-pencil"></i> 有盾网贷黑名单查询</h4>
+
+<p>描述：验证姓名身份证号手机号是否命中网贷黑名单</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：mo9acctaccurate</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">idNo</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号码</td>
+</tr>
+<tr>
+  <td align="left">name</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">mobile</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号码</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"mo9acctaccurate"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"idNo"</span>:<span class="hljs-string">"33032xxxxxxx20114X"</span>,
+        <span class="hljs-string">"name"</span>:<span class="hljs-string">"张小小"</span>,
+        <span class="hljs-string">"mobile"</span>:<span class="hljs-string">"1500000000"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+        <span class="hljs-string">"status"</span>: <span class="hljs-string">"不存在黑名单中"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<h4 id="有盾手机号归属地查询"><i class="icon-pencil"></i> 有盾手机号归属地查询</h4>
+
+<p>描述：查询手机号的归属地区</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：mobileAttribution</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">mobile</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号码</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"mobileAttribution"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"mobile"</span>:<span class="hljs-string">"1500000000"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+         <span class="hljs-string">"desc"</span>: <span class="hljs-string">"贵州联通如意通卡"</span>,
+         <span class="hljs-string">"provincename"</span>: <span class="hljs-string">"贵州"</span>,
+         <span class="hljs-string">"areaname"</span>: <span class="hljs-string">"贵阳、遵义、安顺"</span>,
+         <span class="hljs-string">"isp"</span>: <span class="hljs-string">"中国联通"</span>,
+         <span class="hljs-string">"province"</span>: <span class="hljs-string">"520000"</span>,
+         <span class="hljs-string">"areacode"</span>: <span class="hljs-string">"0851"</span>,
+         <span class="hljs-string">"city"</span>: <span class="hljs-string">"520100"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+
+
+<h4 id="有盾邮箱状态查询"><i class="icon-pencil"></i> 有盾邮箱状态查询</h4>
+
+<p>描述：查询输入邮箱的状态</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：mailboxAttribution</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">email</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">邮箱地址</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs perl">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"mailboxAttribution"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"email"</span>:<span class="hljs-string">"1215xxxxxx<span class="hljs-variable">@qq</span>.com"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+         <span class="hljs-string">"stauts"</span>: <span class="hljs-string">"1"</span>,
+         <span class="hljs-string">"statusInfo"</span>: <span class="hljs-string">"邮箱可用"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+
+
+<h4 id="有盾身份证泄漏查询"><i class="icon-pencil"></i> 有盾身份证泄漏查询</h4>
+
+<p>描述：查询身份证是否被泄漏过</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：idCardLeak</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">cardno</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号码</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"idCardLeak"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"cardno"</span>:<span class="hljs-string">"3604xxxxxxxxx50015"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+          <span class="hljs-string">"res"</span>: <span class="hljs-string">"1"</span>,
+          <span class="hljs-string">"cardno"</span>: <span class="hljs-string">"3604xxxxxxxxx50015"</span>,
+          <span class="hljs-string">"tips"</span>: <span class="hljs-string">"安全"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+
+
+<h4 id="有盾车辆信息查询通过车架号"><i class="icon-pencil"></i> 有盾车辆信息查询(通过车架号)</h4>
+
+<p>描述：输入车架号查询该车辆的信息</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：carInforByvin</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">vin</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">车架号</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"carInforByvin"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"vin"</span>:<span class="hljs-string">"knaln41xxxxx43773"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+          <span class="hljs-string">"carinfo"</span>: <span class="hljs-string">"起亚汽车 起亚Cadenza [凯尊] 三厢 2011款 2.4 手自一体 旗舰版 ( Cadenza [凯尊] 2011年生产 四门5座 )"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+
+
+<h4 id="有盾盗卡黑名单"><i class="icon-pencil"></i> 有盾盗卡黑名单</h4>
+
+<p>描述：验证姓名和身份证是否命中支付反欺诈名单</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：antiFraud</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">reqParam</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号码； 身份证号码； 银行卡号；填其中一种</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"antiFraud"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"reqParam"</span>:<span class="hljs-string">"62155xxxxxx01036309"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+          <span class="hljs-string">"status"</span>: <span class="hljs-string">"未匹配到盗卡信息"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+
+
+<h4 id="有盾类fico征信评分查询"><i class="icon-pencil"></i> 有盾类fico征信评分查询</h4>
+
+<p>描述：验证姓名和身份证是否命中支付反欺诈名单</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：antiFraud</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">reqParam</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号码； 身份证号码； 银行卡号；填其中一种</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"antiFraud"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"reqParam"</span>:<span class="hljs-string">"62155xxxxxx01036309"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+          <span class="hljs-string">"status"</span>: <span class="hljs-string">"未匹配到盗卡信息"</span>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
