@@ -1,7 +1,0 @@
-.*
-!.gitignore
-target
-*.iml
-*.project
-.settings/
-*.classpath
