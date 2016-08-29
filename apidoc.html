@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>doc</title>
-<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-</head>
-<body><div class="container"><hr>
+<hr>
 
 
 
@@ -1372,7 +1363,58 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+<h4 id="通付盾申请查询驾驶证状态"><i class="icon-pencil"></i> 通付盾申请查询驾驶证状态</h4>
+
+<p>描述：查询驾驶证当前的状态 <br>
+<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务查询接口</strong>获取本次的查询结果</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1276321320 <br>
+  interfaceName：jszstatus</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">jszh</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">驾驶证号</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1276321320"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"jszstatus"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"jszh"</span>: <span class="hljs-string">"45XXXXXXXXXXXXXXX78"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"taskNo"</span>:<span class="hljs-string">"TAxxxxxxxx"</span>,
+    <span class="hljs-string">"ansy"</span>:<span class="hljs-string">"true"</span>
+    <span class="hljs-string">"orderNo"</span>:<span class="hljs-string">"201608041260963184"</span>
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
 <h2 id="特殊接口类型定义">特殊接口类型定义</h2>
 
-<h2 id="特殊接口详情">特殊接口详情</h2></div></body>
-</html>
+<h2 id="特殊接口详情">特殊接口详情</h2>
