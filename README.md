@@ -124,7 +124,6 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
     "code":200
 }
 ```
-
 #### <i class="icon-pencil"></i> 有盾IP地址归属地查询
 描述：根据IP地址查询该IP地址所属地区
 
@@ -151,7 +150,7 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
 }
 ```
 ```
-返回参数：
+返回参数格式：
 {
     "message":"请求成功",
     "res":{
@@ -165,8 +164,258 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
     "code":200
 }
 ```
+#### <i class="icon-pencil"></i> 有盾网贷黑名单查询
+描述：验证姓名身份证号手机号是否命中网贷黑名单
 
-
+> 公共参数：
+> channelNo：CH1709907004
+> interfaceName：mo9acctaccurate
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :------------- |
+| idNo|String | 是    |        身份证号码  |
+| name|String | 是    |       姓名  |  
+| mobile|String | 是    |       手机号码 |
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"mo9acctaccurate",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "idNo":"33032xxxxxxx20114X",
+        "name":"张小小",
+        "mobile":"1500000000"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+        "status": "不存在黑名单中"
+    },
+    "code":200
+}
+```
+#### <i class="icon-pencil"></i> 有盾手机号归属地查询
+描述：查询手机号的归属地区
+> 公共参数：
+> channelNo：CH1709907004
+> interfaceName：mobileAttribution
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :------------- |
+| mobile|String | 是    |        手机号码  |
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"mobileAttribution",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "mobile":"1500000000"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+         "desc": "贵州联通如意通卡",
+         "provincename": "贵州",
+         "areaname": "贵阳、遵义、安顺",
+         "isp": "中国联通",
+         "province": "520000",
+         "areacode": "0851",
+         "city": "520100"
+    },
+    "code":200
+}
+```
+#### <i class="icon-pencil"></i> 有盾邮箱状态查询
+描述：查询输入邮箱的状态
+> 公共参数：
+> channelNo：CH1709907004
+> interfaceName：mailboxAttribution
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :------------- |
+| email|String | 是    |        邮箱地址  |
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"mailboxAttribution",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "email":"1215xxxxxx@qq.com"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+         "stauts": "1",
+         "statusInfo": "邮箱可用"
+    },
+    "code":200
+}
+```
+#### <i class="icon-pencil"></i> 有盾身份证泄漏查询
+描述：查询身份证是否被泄漏过
+> 公共参数：
+> channelNo：CH1709907004
+> interfaceName：idCardLeak
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :------------- |
+| cardno|String | 是    |        身份证号码  |
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"idCardLeak",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "cardno":"3604xxxxxxxxx50015"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+          "res": "1",
+          "cardno": "3604xxxxxxxxx50015",
+          "tips": "安全"
+    },
+    "code":200
+}
+```
+#### <i class="icon-pencil"></i> 有盾车辆信息查询(通过车架号)
+描述：输入车架号查询该车辆的信息
+> 公共参数：
+> channelNo：CH1709907004
+> interfaceName：carInforByvin
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :------------- |
+| vin|String | 是    |        车架号  |
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"carInforByvin",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "vin":"knaln41xxxxx43773"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+          "carinfo": "起亚汽车 起亚Cadenza [凯尊] 三厢 2011款 2.4 手自一体 旗舰版 ( Cadenza [凯尊] 2011年生产 四门5座 )"
+    },
+    "code":200
+}
+```
+#### <i class="icon-pencil"></i> 有盾盗卡黑名单
+描述：验证姓名和身份证是否命中支付反欺诈名单
+> 公共参数：
+> channelNo：CH1709907004
+> interfaceName：antiFraud
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :------------- |
+| reqParam|String | 是    |        手机号码； 身份证号码； 银行卡号；填其中一种|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"antiFraud",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "reqParam":"62155xxxxxx01036309"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+          "status": "未匹配到盗卡信息"
+    },
+    "code":200
+}
+```
+#### <i class="icon-pencil"></i> 有盾类fico征信评分查询
+描述：验证姓名和身份证是否命中支付反欺诈名单
+> 公共参数：
+> channelNo：CH1709907004
+> interfaceName：antiFraud
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :------------- |
+| reqParam|String | 是    |        手机号码； 身份证号码； 银行卡号；填其中一种|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"antiFraud",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "reqParam":"62155xxxxxx01036309"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+          "status": "未匹配到盗卡信息"
+    },
+    "code":200
+}
+```
 
 #### <i class="icon-folder-open"></i> Switch to another document
 
