@@ -21,23 +21,28 @@ DsCreditApi 接口调用说明
 ----------
 公共参数
 ----------
-平台分发给每个商户使用，可在平台安全功能中的key/secret功能中获取。
-
-> 
+公共参数表示无论何种类型的接口每次请求都会传递的参数。
+apiKey和secretKey是平台分发给每个商户使用，可在平台安全功能中的key/secret功能中获取。
+secretKey：对参数进行签名生成sign参数，请妥善保管，不可泄露！
+> **请求公共参数**：
 - apiKey：识别用户的作用，唯一值。
 - channelNo：为查询接口的对应渠道编号。
 - interfaceName：为所需查询的接口名称。
 - timestamp：请求的时间戳，签名时使用。
 - sign：签名字符串。
-
- secretKey：对参数进行签名生成sign参数，请妥善保管，不可泄露！
+>
+> **返回公共参数**：
+> message：执行结果提示信息。
+> code：执行结果状态码，200为请求成功，并获取相关数据，400为某些原因导致请求失败，如参数格式错误、无相关数据等，500为服务器内部错误。401为无权限请求。
+> res：查询所需的结果数据，为JSON对象类型。
+ 
 
 普通类型接口定义
 -------------
 
 大部分的接口都为普通类型接口(包括同步接口和异步接口)，调用方式为**POST**请求;
 HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-8;
-传入的参数为**JSON**格式的字符串，请在**raw/body**中提交，具体请参考代码示例。
+传入的参数为**JSON**格式的字符串，请在**raw/body**中提交，具体请参考apidemo代码示例。
 
 #### <i class="icon-file"></i> 接口地址名称
 
@@ -46,7 +51,7 @@ HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-
 #### <i class="icon-file"></i> 请求参数格式
 
  - 公共参数和每个接口所对应的**查询参数**按照一定的格式提交。
- - 将每个接口的查询参数（即查询这个接口需要传入的参数，非公共参数）放入一个名为：**payload**的Map中和公共参数一起组装成提交的JSON格式。
+ - 将每个接口的查询参数（即查询这个接口所需要传入的对应参数，非公共参数）放入一个名为：**payload**的Map中和公共参数一起组装成提交的JSON格式。
 ```
 {
 	"apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
@@ -93,11 +98,73 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
 | :------ | -----: | :-----: | :-------------: |
 | cardno|String | 是    |       所需查询的银行卡卡号  |
 >
->返回参数：
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"bankcardbin_query",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "cardno":"62220xxxxxxxxxx45702"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+        "cardtype":"借记卡",
+        "orgcode":"01020000",
+        "cardname":"E时代卡",
+        "orgname":"工商银行"
+    },
+    "code":200
+}
+```
+
+#### <i class="icon-pencil"></i> 有盾IP地址归属地查询
+描述：根据IP地址查询该IP地址所属地区
+
+> 公共参数：
+> channelNo：CH1709907004
+> interfaceName：ip_lattribution
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :-------------: |
+| ip|String | 是    |       所需查询的IP地址  |
 >
-
-
-
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"ip_lattribution",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "ip":"60.22.45.11"
+    }
+}
+```
+```
+返回参数：
+{
+    "message":"请求成功",
+    "res":{
+        "provincename": "辽宁",
+	    "desc": "联通",
+        "address": "辽宁省营口市",
+        "province": "210000",
+        "cityname": "营口",
+        "city": "210800"
+    },
+    "code":200
+}
+```
 
 
 
