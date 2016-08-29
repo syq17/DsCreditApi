@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>doc</title>
-<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-</head>
-<body><div class="container"><hr>
+<hr>
 
 
 
@@ -47,11 +38,16 @@
 <li><a href="#有盾车辆信息查询通过车架号"> 有盾车辆信息查询(通过车架号)</a></li>
 <li><a href="#有盾盗卡黑名单"> 有盾盗卡黑名单</a></li>
 <li><a href="#有盾实名认证人像"> 有盾实名认证（人像）</a></li>
-<li><a href="#有数企业综合信息"> 有数企业综合信息</a></li>
+<li><a href="#有盾信用魔镜借款信息查询"> 有盾信用魔镜借款信息查询</a></li>
+<li><a href="#华道学历查询"> 华道学历查询</a></li>
+<li><a href="#华道退货次数查询"> 华道退货次数查询</a></li>
+<li><a href="#华道房车子女宠物信息查询"> 华道（房|车|子女|宠物）信息查询</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#特殊接口类型定义">特殊接口类型定义</a></li>
+<li><a href="#特殊接口详情">特殊接口详情</a></li>
 </ul>
 </li>
 </ul>
@@ -60,11 +56,9 @@
 
 <hr>
 
-
-
 <h2 id="公共参数">公共参数</h2>
 
-<p>公共参数表示无论何种类型的接口每次请求都会传递的参数。 <br>
+<p>公共参数表示无论何种类型的接口每次请求都需传递的参数。 <br>
 apiKey和secretKey是平台分发给每个商户使用，可在平台安全功能中的key/secret功能中获取。 <br>
 secretKey：对参数进行签名生成sign参数，请妥善保管，不可泄露！</p>
 
@@ -81,8 +75,6 @@ secretKey：对参数进行签名生成sign参数，请妥善保管，不可泄�
   code：执行结果状态码，200为请求成功，并获取相关数据，400为某些原因导致请求失败，如参数格式错误、无相关数据等，500为服务器内部错误。401为无权限请求。 <br>
   res：查询所需的结果数据，为JSON对象类型。</p>
 </blockquote>
-
-
 
 <h2 id="普通类型接口定义">普通类型接口定义</h2>
 
@@ -147,8 +139,6 @@ paramMap = {
 sortMap = <span class="hljs-keyword">sort</span>(paramMap);
 sortJsonStr = Json.toString(sortMap);
 sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
-
-
 
 <h2 id="普通接口详情">普通接口详情</h2>
 
@@ -694,18 +684,98 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
-<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+<pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
     <span class="hljs-string">"res"</span>:{
            <span class="hljs-string">"status"</span>: <span class="hljs-string">"认证一致"</span>,
            <span class="hljs-string">"photo"</span>: <span class="hljs-string">"IMG1817034037.jpg"</span>,
-           <span class="hljs-string">"base64Photo"</span>:<span class="hljs-string">"/9PGSEGESGDS=="</span>
+           <span class="hljs-string">"base64Photo"</span>:<span class="hljs-string">"/9PGSEGESGDS=="</span>  <span class="hljs-comment">//图片的base64字符串</span>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
 
+
+<h4 id="有盾信用魔镜借款信息查询"><i class="icon-pencil"></i> 有盾信用魔镜借款信息查询</h4>
+
+<p>描述：以个人身份证号为维度，查询该身份证号指定时间区间内的所有不同借款平台数和借款次数。如果没有指定时间区间，则查询该身份证号所有记录的不同借款平台数和借款次数</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：borrowingTimes</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">name</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">idno</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号码</td>
+</tr>
+<tr>
+  <td align="left">mobile</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号码</td>
+</tr>
+<tr>
+  <td align="left">startTime</td>
+  <td align="right">String</td>
+  <td align="center">否</td>
+  <td align="left">查询起始时间（格式：yyyyMMdd）</td>
+</tr>
+<tr>
+  <td align="left">endTime</td>
+  <td align="right">String</td>
+  <td align="center">否</td>
+  <td align="left">身查询结束时间（格式：yyyyMMdd）</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"borrowingTimes"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+         <span class="hljs-string">"startTime"</span>: <span class="hljs-string">"20160101"</span>,
+         <span class="hljs-string">"name"</span>: <span class="hljs-string">"李XX"</span>,
+         <span class="hljs-string">"endTime"</span>: <span class="hljs-string">"20170101"</span>,
+         <span class="hljs-string">"idno"</span>: <span class="hljs-string">"330XXXXXXXXXXX915"</span>,
+         <span class="hljs-string">"mobile"</span>: <span class="hljs-string">"18000000000"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs cs">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+           <span class="hljs-string">"borrowtimes"</span>: <span class="hljs-string">"0"</span>,  <span class="hljs-comment">//借款次数</span>
+           <span class="hljs-string">"platnum"</span>: <span class="hljs-string">"0"</span>       <span class="hljs-comment">//借款平台数</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
 
 <h4 id="华道学历查询"><i class="icon-pencil"></i> 华道学历查询</h4>
 
@@ -903,7 +973,7 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 <h4 id="华道房车子女宠物信息查询"><i class="icon-pencil"></i> 华道（房|车|子女|宠物）信息查询</h4>
 
-<p>描述：查询</p>
+<p>描述：查询个人名下的房，车，子女，及宠物是否存在</p>
 
 <blockquote>
   <p>公共参数： <br>
@@ -967,7 +1037,332 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+
+
+<h4 id="通付盾银行卡四要素验证"><i class="icon-pencil"></i> 通付盾银行卡四要素验证</h4>
+
+<p>描述：查询银行卡号码，姓名，身份证号，办卡时绑定的手机号码来验证</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH0292901972 <br>
+  interfaceName：bankCardQuery</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">name</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">mobile</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号码</td>
+</tr>
+<tr>
+  <td align="left">idCard</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号</td>
+</tr>
+<tr>
+  <td align="left">bankCardNum</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">银行卡号码</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH0292901972"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"bankCardQuery"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"bankCardNum"</span>:<span class="hljs-string">"621XXXXXXXXXXX4440"</span>,
+        <span class="hljs-string">"idCard"</span>:<span class="hljs-string">"33XXXXXXXXXXXXXX16"</span>,
+        <span class="hljs-string">"name"</span>:<span class="hljs-string">"王XX"</span>,
+        <span class="hljs-string">"mobile"</span>:<span class="hljs-string">"1580000000"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+            <span class="hljs-string">"idCard"</span>: <span class="hljs-string">"33XXXXXXXXXXXXXX16"</span>,
+            <span class="hljs-string">"bankCardNum"</span>: <span class="hljs-string">"621XXXXXXXXXXX4440"</span>,
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"王XX"</span>,
+            <span class="hljs-string">"statCode"</span>: <span class="hljs-string">"1200"</span>,
+            <span class="hljs-string">"msg"</span>: <span class="hljs-string">"银行卡核查一致"</span>,
+            <span class="hljs-string">"mobile"</span>: <span class="hljs-string">"1580000000"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<h4 id="通付盾身份证多项校验服务接口"><i class="icon-pencil"></i> 通付盾身份证多项校验服务接口</h4>
+
+<p>描述：通过输入的信息来验证身份可信度</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1276321320 <br>
+  interfaceName：advanceId</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">name</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">xb</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">性别</td>
+</tr>
+<tr>
+  <td align="left">idCard</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号</td>
+</tr>
+<tr>
+  <td align="left">csrq</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">出身年月日</td>
+</tr>
+<tr>
+  <td align="left">whcd</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">文化程度</td>
+</tr>
+<tr>
+  <td align="left">zz</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份所在地</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1276321320"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"advanceId"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"idCard"</span>:<span class="hljs-string">"33XXXXXXXXXXXXXX16"</span>,
+        <span class="hljs-string">"name"</span>:<span class="hljs-string">"张XX"</span>,
+        <span class="hljs-string">"xb"</span>:<span class="hljs-string">"男性"</span>,
+        <span class="hljs-string">"csrq"</span>:<span class="hljs-string">"1978-02-15"</span>,
+        <span class="hljs-string">"whcd"</span>:<span class="hljs-string">"本科"</span>,
+        <span class="hljs-string">"zz"</span>:<span class="hljs-string">"杭州"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs cs">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+             <span class="hljs-string">"whcd"</span>: <span class="hljs-string">"本科"</span>,
+            <span class="hljs-string">"idCard"</span>: <span class="hljs-string">"33XXXXXXXXXXXXXX16"</span>,
+            <span class="hljs-string">"zz"</span>: <span class="hljs-string">"临海"</span>,
+            <span class="hljs-string">"statCode"</span>: <span class="hljs-string">"1100"</span>,
+            <span class="hljs-string">"msg"</span>: <span class="hljs-string">"身份证结果一致"</span>,
+            <span class="hljs-string">"resultCsrq"</span>: <span class="hljs-string">"一致"</span>,   <span class="hljs-comment">//根据输入参数来查看字段含义</span>
+            <span class="hljs-string">"resultGmsfhm"</span>: <span class="hljs-string">"一致"</span>,
+            <span class="hljs-string">"resultZz"</span>: <span class="hljs-string">"不一致"</span>,
+            <span class="hljs-string">"resultWhcd"</span>: <span class="hljs-string">"不一致"</span>,
+            <span class="hljs-string">"resultZzFs"</span>: <span class="hljs-string">"相当专科毕业"</span>,
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"张XX"</span>,
+            <span class="hljs-string">"xb"</span>: <span class="hljs-string">"男性"</span>,
+            <span class="hljs-string">"csrq"</span>: <span class="hljs-string">"1978-02-15"</span>,
+            <span class="hljs-string">"resultXm"</span>: <span class="hljs-string">"一致"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<h4 id="通付盾手机在网时长查询"><i class="icon-pencil"></i> 通付盾手机在网时长查询</h4>
+
+<p>描述：查询手机号在网时长（暂不支持移动号码查询）</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH0292901972 <br>
+  interfaceName：mobinnetQuery</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">mobile</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH0292901972"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"mobinnetQuery"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"mobile"</span>:<span class="hljs-string">"158000000"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+        <span class="hljs-string">"state"</span>: <span class="hljs-string">"36个月以上在网时长"</span>,
+        <span class="hljs-string">"statCode"</span>: <span class="hljs-string">"1505"</span>,
+        <span class="hljs-string">"mobile"</span>: <span class="hljs-string">"158000000"</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<h4 id="通付盾申请比对驾驶证基本信息查询"><i class="icon-pencil"></i> 通付盾申请比对驾驶证基本信息查询</h4>
+
+<p>描述：对比用户驾驶证中的各种信息（按对比信息个数收费，最少对比2条信息，最多对比8条信息，费用区间：3.2-12.8） <br>
+<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务查询接口</strong>获取本次的查询结果</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1276321320 <br>
+  interfaceName：jszverify</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">jszh</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">驾驶证号</td>
+</tr>
+<tr>
+  <td align="left">xm</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">csrq</td>
+  <td align="right">String</td>
+  <td align="center">否</td>
+  <td align="left">出生日期、年龄范围。格式为 yyyyMMdd</td>
+</tr>
+<tr>
+  <td align="left">dabh</td>
+  <td align="right">String</td>
+  <td align="center">否</td>
+  <td align="left">档案编号</td>
+</tr>
+<tr>
+  <td align="left">zjcx</td>
+  <td align="right">String</td>
+  <td align="center">否</td>
+  <td align="left">准驾车型、准驾车型范围</td>
+</tr>
+<tr>
+  <td align="left">cclzrq</td>
+  <td align="right">String</td>
+  <td align="center">否</td>
+  <td align="left">初次领证日期、驾龄范围。格式为 yyyyMMdd</td>
+</tr>
+<tr>
+  <td align="left">yxqs</td>
+  <td align="right">String</td>
+  <td align="center">否</td>
+  <td align="left">有效期始</td>
+</tr>
+<tr>
+  <td align="left">yxqz</td>
+  <td align="right">String</td>
+  <td align="center">否</td>
+  <td align="left">有效期止</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1276321320"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"jszverify"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"jszh"</span>: <span class="hljs-string">"45XXXXXXXXXXXXXXX78"</span>,
+        <span class="hljs-string">"xm"</span>: <span class="hljs-string">"李XX"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"taskNo"</span>:<span class="hljs-string">"TAxxxxxxxx"</span>,
+    <span class="hljs-string">"ansy"</span>:<span class="hljs-string">"true"</span>
+    <span class="hljs-string">"orderNo"</span>:<span class="hljs-string">"201608041260963184"</span>
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
 <h2 id="特殊接口类型定义">特殊接口类型定义</h2>
 
-<h2 id="特殊接口详情">特殊接口详情</h2></div></body>
-</html>
+<h2 id="特殊接口详情">特殊接口详情</h2>
