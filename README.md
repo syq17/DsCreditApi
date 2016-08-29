@@ -405,7 +405,7 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
     "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
     "timestamp":1472367902248,
     "payload":{
-        "name_card":"杨振坤",
+        "name_card":"杨XX",
         "id_card":"360781xxxxxx082030"
     }
 }
@@ -422,27 +422,89 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
     "code":200
 }
 ```
-#### <i class="icon-pencil"></i> 有数企业综合信息
-描述：企业信息360度全方位查询
+#### <i class="icon-pencil"></i> 华道学历查询
+描述：查询学历程度
 > 公共参数：
-> channelNo：CH2111907949
-> interfaceName：companyComplex
+> channelNo：CH2022086619
+> interfaceName：GetEduFactQueryAttribute
 > 
 > 查询参数：
 > | 字段名     | 类型 | 是否必填   | 描述 |
 | :------ | -----: | :-----: | :------------- |
-| name|String | 是    |       企业名称或者企业注册号|
+| idcode|String | 是    |       身份证号码|
+| name|String | 是    |       姓名|
 >
 ```
 提交参数格式：
 {
     "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
-    "channelNo":"CH2111907949",
-    "interfaceName":"companyComplex",
+    "channelNo":"CH2022086619",
+    "interfaceName":"GetEduFactQueryAttribute",
     "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
     "timestamp":1472367902248,
     "payload":{
-        "name":"杭州金爵洁具有限公司"
+        "idcode": "3607811xxxxxx182030",
+        "name": "杨XX"
+    }
+}
+```
+> 返回参数：
+>  | 字段名     | 类型    | 描述 |
+| :------ | -----:  | :------------- |
+| id|String     |       身份证号码|
+| graduateTime|String     |       毕业年份|
+| enrolDate|String     |       入学年份|
+| status|String     |       查询状态结果|
+| studyResult|String    |    毕业结论  |
+| graduate|String |       毕业院校|
+| studyStyle|String |        学历类型|
+| userName|String |      姓名|
+| educationDegree|String |       学历|
+| specialityName|String |       专业|
+>
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+           "id": "360781199310182030",
+           "graduateTime": "2015",
+           "enrolDate": "20110901",
+           "status": "查询成功",
+           "studyResult": "毕业",
+           "graduate": "XX大学",
+           "studyStyle": "普通",
+           "userName": "杨XX",
+           "educationDegree": "本科",
+           "specialityName": "考古学"
+    },
+    "code":200
+}
+```
+
+#### <i class="icon-pencil"></i> 华道退货次数查询
+描述：华道退货次数查询
+> 公共参数：
+> channelNo：CH2022086619
+> interfaceName：GetReturnGoodsFrequency
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :------------- |
+| Phone|String | 是    |       手机号码|
+| Cycle|String | 是    |       时间段(1,3,6,9,12,24)单位:月|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH2022086619",
+    "interfaceName":"GetReturnGoodsFrequency",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "Phone": "15800000000",
+        "Cycle": "1"
     }
 }
 ```
@@ -451,15 +513,57 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
 {
     "message":"请求成功",
     "res":{
-           请参考有数金服api接口返回格式中的data中的结构
+           "PHONE": "15800000000",
+           "FREQUENCY": "0", //频次
+           "CODE": "200"
+    },
+    "code":200
+}
+```
+
+#### <i class="icon-pencil"></i> 华道（房|车|子女|宠物）信息查询
+描述：查询
+> 公共参数：
+> channelNo：CH2022086619
+> interfaceName：GetIsTag
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :--------|
+| Phone|String | 是    |       手机号码|
+| Type|String | 是    |       0全部 1是否有房 2是否有车 3 是否有子女 4 是否有宠物|
+| Cycle|String | 是    |       时间段(1,3,6,9,12,24)单位:月|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH2022086619",
+    "interfaceName":"GetIsTag",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "Phone": "15800000000",
+        "Type": "0",
+        "Cycle": "24"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+            "PHONE": "15800000000",
+		    "resultMessage": "不是房主,不是车主,没有子女,没有宠物"
     },
     "code":200
 }
 ```
 
 
-
-
+特殊接口类型定义
+-------------
 
 特殊接口详情
 -------------
