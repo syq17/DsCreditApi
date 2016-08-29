@@ -787,6 +787,42 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
 }
 ```
 
+#### <i class="icon-pencil"></i> 通付盾申请查询驾驶证状态
+描述：查询驾驶证当前的状态
+**Note:** 该接口是异步接口，请求之后根据获取的taskNo去**任务查询接口**获取本次的查询结果
+> 公共参数：
+> channelNo：CH1276321320
+> interfaceName：jszstatus
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :--------|
+| jszh|String | 是    |       驾驶证号|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1276321320",
+    "interfaceName":"jszstatus",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "jszh": "45XXXXXXXXXXXXXXX78"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+	"taskNo":"TAxxxxxxxx",
+    "ansy":"true"
+    "orderNo":"201608041260963184"
+    "code":200
+}
+```
+
 特殊接口类型定义
 -------------
 
