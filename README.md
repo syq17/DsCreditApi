@@ -21,7 +21,7 @@ DsCreditApi 接口调用说明
 ----------
 公共参数
 ----------
-公共参数表示无论何种类型的接口每次请求都会传递的参数。
+公共参数表示无论何种类型的接口每次请求都需传递的参数。
 apiKey和secretKey是平台分发给每个商户使用，可在平台安全功能中的key/secret功能中获取。
 secretKey：对参数进行签名生成sign参数，请妥善保管，不可泄露！
 > **请求公共参数**：
@@ -417,7 +417,50 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
     "res":{
            "status": "认证一致",
            "photo": "IMG1817034037.jpg",
-           "base64Photo":"/9PGSEGESGDS=="
+           "base64Photo":"/9PGSEGESGDS=="  //图片的base64字符串
+    },
+    "code":200
+}
+```
+#### <i class="icon-pencil"></i> 有盾信用魔镜借款信息查询
+描述：以个人身份证号为维度，查询该身份证号指定时间区间内的所有不同借款平台数和借款次数。如果没有指定时间区间，则查询该身份证号所有记录的不同借款平台数和借款次数
+> 公共参数：
+> channelNo：CH1709907004
+> interfaceName：borrowingTimes
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :------------- |
+| name|String | 是    |       姓名|
+| idno|String | 是    |       身份证号码|
+| mobile|String | 是    |       手机号码|
+| startTime|String | 否    |       查询起始时间（格式：yyyyMMdd）|
+| endTime|String | 否   |       身查询结束时间（格式：yyyyMMdd）|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1709907004",
+    "interfaceName":"borrowingTimes",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+         "startTime": "20160101",
+         "name": "李XX",
+         "endTime": "20170101",
+         "idno": "330XXXXXXXXXXX915",
+         "mobile": "18000000000"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+           "borrowtimes": "0",  //借款次数
+           "platnum": "0"       //借款平台数
     },
     "code":200
 }
@@ -520,9 +563,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
     "code":200
 }
 ```
-
 #### <i class="icon-pencil"></i> 华道（房|车|子女|宠物）信息查询
-描述：查询
+描述：查询个人名下的房，车，子女，及宠物是否存在
 > 公共参数：
 > channelNo：CH2022086619
 > interfaceName：GetIsTag
@@ -560,7 +602,190 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);
     "code":200
 }
 ```
+#### <i class="icon-pencil"></i> 通付盾银行卡四要素验证
+描述：查询银行卡号码，姓名，身份证号，办卡时绑定的手机号码来验证
+> 公共参数：
+> channelNo：CH0292901972
+> interfaceName：bankCardQuery
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :--------|
+| name|String | 是    |       姓名|
+| mobile|String | 是    |      手机号码|
+| idCard|String | 是    |       身份证号|
+| bankCardNum|String | 是    |       银行卡号码|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH0292901972",
+    "interfaceName":"bankCardQuery",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "bankCardNum":"621XXXXXXXXXXX4440",
+        "idCard":"33XXXXXXXXXXXXXX16",
+        "name":"王XX",
+        "mobile":"1580000000"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+            "idCard": "33XXXXXXXXXXXXXX16",
+            "bankCardNum": "621XXXXXXXXXXX4440",
+            "name": "王XX",
+            "statCode": "1200",
+            "msg": "银行卡核查一致",
+            "mobile": "1580000000"
+    },
+    "code":200
+}
+```
 
+#### <i class="icon-pencil"></i> 通付盾身份证多项校验服务接口
+描述：通过输入的信息来验证身份可信度
+> 公共参数：
+> channelNo：CH1276321320
+> interfaceName：advanceId
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :--------|
+| name|String | 是    |       姓名|
+| xb|String | 是    |      性别|
+| idCard|String | 是    |       身份证号|
+| csrq|String | 是    |       出身年月日|
+| whcd|String | 是    |       文化程度|
+| zz|String | 是    |       身份所在地|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1276321320",
+    "interfaceName":"advanceId",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "idCard":"33XXXXXXXXXXXXXX16",
+	    "name":"张XX",
+	    "xb":"男性",
+	    "csrq":"1978-02-15",
+	    "whcd":"本科",
+	    "zz":"杭州"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+             "whcd": "本科",
+	        "idCard": "33XXXXXXXXXXXXXX16",
+	        "zz": "临海",
+	        "statCode": "1100",
+	        "msg": "身份证结果一致",
+	        "resultCsrq": "一致",   //根据输入参数来查看字段含义
+	        "resultGmsfhm": "一致",
+	        "resultZz": "不一致",
+	        "resultWhcd": "不一致",
+	        "resultZzFs": "相当专科毕业",
+	        "name": "张XX",
+	        "xb": "男性",
+	        "csrq": "1978-02-15",
+	        "resultXm": "一致"
+    },
+    "code":200
+}
+```
+
+#### <i class="icon-pencil"></i> 通付盾手机在网时长查询
+描述：查询手机号在网时长（暂不支持移动号码查询）
+> 公共参数：
+> channelNo：CH0292901972
+> interfaceName：mobinnetQuery
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :--------|
+| mobile|String | 是    |       手机号|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH0292901972",
+    "interfaceName":"mobinnetQuery",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "mobile":"158000000"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+    "res":{
+	    "state": "36个月以上在网时长",
+	    "statCode": "1505",
+	    "mobile": "158000000"
+    },
+    "code":200
+}
+```
+
+#### <i class="icon-pencil"></i> 通付盾申请比对驾驶证基本信息查询
+描述：对比用户驾驶证中的各种信息（按对比信息个数收费，最少对比2条信息，最多对比8条信息，费用区间：3.2-12.8）
+**Note:** 该接口是异步接口，请求之后根据获取的taskNo去**任务查询接口**获取本次的查询结果
+> 公共参数：
+> channelNo：CH1276321320
+> interfaceName：jszverify
+> 
+> 查询参数：
+> | 字段名     | 类型 | 是否必填   | 描述 |
+| :------ | -----: | :-----: | :--------|
+| jszh|String | 是    |       驾驶证号|
+| xm|String | 是    |       姓名|
+| csrq|String | 否    |       出生日期、年龄范围。格式为 yyyyMMdd|
+| dabh|String | 否    |     档案编号  |
+| zjcx|String | 否    |       准驾车型、准驾车型范围|
+| cclzrq|String | 否    |       初次领证日期、驾龄范围。格式为 yyyyMMdd|
+| yxqs|String | 否    |      有效期始|
+| yxqz|String | 否    |       有效期止|
+>
+```
+提交参数格式：
+{
+    "apiKey":"161c5ce6-7385-48db-bf68-bc3a8e83",
+    "channelNo":"CH1276321320",
+    "interfaceName":"jszverify",
+    "sign":"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92",
+    "timestamp":1472367902248,
+    "payload":{
+        "jszh": "45XXXXXXXXXXXXXXX78",
+	    "xm": "李XX"
+    }
+}
+```
+```
+返回参数格式：
+{
+    "message":"请求成功",
+	"taskNo":"TAxxxxxxxx",
+    "ansy":"true"
+    "orderNo":"201608041260963184"
+    "code":200
+}
+```
 
 特殊接口类型定义
 -------------
