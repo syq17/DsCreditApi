@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>doc</title>
-<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-</head>
-<body><div class="container"><hr>
+<hr>
 
 
 
 <h1 id="dscreditapi-接口调用说明">DsCreditApi 接口调用说明</h1>
 
 <hr>
+
+
 
 <h3 id="title"> </h3>
 
@@ -68,20 +61,27 @@
 
 <hr>
 
-<h2 id="公共参数">公共参数</h2>
 
-<p>公共参数表示无论何种类型的接口每次请求都需传递的参数。 <br>
-apiKey和secretKey是平台分发给每个商户使用，可在平台安全功能中的key/secret功能中获取。 <br>
-secretKey：对参数进行签名生成sign参数，请妥善保管，不可泄露！</p>
+
+<h2 id="特殊参数说明">特殊参数说明</h2>
+
+<p>1.公共参数是指在普通类型的接口中都需要用到的参数，具体公共参数如下：</p>
 
 <blockquote>
   <p><strong>请求公共参数</strong>： <br>
-  - apiKey：识别用户的作用，唯一值。 <br>
-  - channelNo：为查询接口的对应渠道编号。 <br>
-  - interfaceName：为所需查询的接口名称。 <br>
-  - timestamp：请求的时间戳，签名时使用。 <br>
-  - sign：签名字符串。</p>
-  
+  apiKey：识别用户的作用，唯一值。 <br>
+  channelNo：为查询接口的对应渠道编号。 <br>
+  interfaceName：为所需查询的接口名称。 <br>
+  timestamp：请求的时间戳，签名时使用。 <br>
+  sign：签名字符串。</p>
+</blockquote>
+
+<p>2.apiKey和secretKey是平台分发给每个商户使用，可在平台安全功能中的key/secret功能中获取。 <br>
+secretKey：对参数进行签名生成sign参数，请妥善保管，不可泄露！</p>
+
+<p>3.返回的公共参数值接口调用都会返回的几个固定字段，具体参数有：</p>
+
+<blockquote>
   <p><strong>返回公共参数</strong>： <br>
   message：执行结果提示信息。 <br>
   code：执行结果状态码，200为请求成功，并获取相关数据，400为某些原因导致请求失败，如参数格式错误、无相关数据等，500为服务器内部错误。401为无权限请求。 <br>
@@ -151,6 +151,8 @@ paramMap = {
 sortMap = <span class="hljs-keyword">sort</span>(paramMap);
 sortJsonStr = Json.toString(sortMap);
 sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
+
+
 
 <h2 id="普通接口详情">普通接口详情</h2>
 
@@ -696,6 +698,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -763,6 +767,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -779,6 +785,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -788,6 +796,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+
 
 <h4 id="华道学历查询"><i class="icon-pencil"></i> 华道学历查询</h4>
 
@@ -824,6 +834,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 </tbody></table>
 
 </blockquote>
+
+
 
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
@@ -903,6 +915,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -959,6 +973,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -972,6 +988,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -982,6 +1000,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+
 
 <h4 id="华道房车子女宠物信息查询"><i class="icon-pencil"></i> 华道（房|车|子女|宠物）信息查询</h4>
 
@@ -1025,6 +1045,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1038,6 +1060,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
         <span class="hljs-string">"Cycle"</span>: <span class="hljs-string">"24"</span>
     }
 }</code></pre>
+
+
 
 <pre class="prettyprint"><code class=" hljs bash">返回参数格式：
 {
@@ -1099,6 +1123,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1114,6 +1140,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -1127,6 +1155,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+
 
 <h4 id="通付盾身份证多项校验服务接口"><i class="icon-pencil"></i> 通付盾身份证多项校验服务接口</h4>
 
@@ -1188,6 +1218,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1204,6 +1236,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
         <span class="hljs-string">"zz"</span>:<span class="hljs-string">"杭州"</span>
     }
 }</code></pre>
+
+
 
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
@@ -1226,6 +1260,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+
 
 <h4 id="通付盾手机在网时长查询"><i class="icon-pencil"></i> 通付盾手机在网时长查询</h4>
 
@@ -1257,6 +1293,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1269,6 +1307,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -1279,6 +1319,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+
 
 <h4 id="通付盾申请比对驾驶证基本信息查询"><i class="icon-pencil"></i> 通付盾申请比对驾驶证基本信息查询</h4>
 
@@ -1353,6 +1395,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1366,6 +1410,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -1374,6 +1420,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"orderNo"</span>:<span class="hljs-string">"201608041260963184"</span>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+
 
 <h4 id="通付盾申请查询驾驶证状态"><i class="icon-pencil"></i> 通付盾申请查询驾驶证状态</h4>
 
@@ -1406,6 +1454,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1418,6 +1468,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -1427,7 +1479,10 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+
+
 <h2 id="特殊接口类型定义">特殊接口类型定义</h2>
 
-<h2 id="特殊接口详情">特殊接口详情</h2></div></body>
-</html>
+
+
+<h2 id="特殊接口详情">特殊接口详情</h2>
