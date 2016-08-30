@@ -15,9 +15,13 @@ public class Header {
 
 
     public Header(String apiKey, String channelNo, String interfaceName, long timestamp) {
-        this.apiKey = apiKey;
+        this(apiKey, timestamp);
         this.channelNo = channelNo;
         this.interfaceName = interfaceName;
+    }
+
+    public Header(String apiKey, long timestamp) {
+        this.apiKey = apiKey;
         this.timestamp = timestamp;
     }
 

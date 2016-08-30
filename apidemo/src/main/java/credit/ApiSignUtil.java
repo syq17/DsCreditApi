@@ -32,10 +32,13 @@ public class ApiSignUtil {
     public static String sign(String apiKey, String channelNo, String interfaceName, long timestamp, String secretKey, Map<String, Object> payload) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("apiKey", apiKey);
-        paramMap.put("channelNo", channelNo);
-        paramMap.put("interfaceName", interfaceName);
+        if(channelNo != null){
+            paramMap.put("channelNo", channelNo);
+        }
+        if(interfaceName != null){
+            paramMap.put("interfaceName", interfaceName);
+        }
         paramMap.put("timestamp", timestamp);
-
         Set<String> payloadKeys = payload.keySet();
         for (String payloadKey : payloadKeys) {
             paramMap.put(payloadKey, payload.get(payloadKey));
