@@ -77,6 +77,8 @@
 
 <hr>
 
+
+
 <h2 id="固定参数说明">固定参数说明</h2>
 
 <p>1.<strong>公共参数</strong>是指在普通类型的接口中都需要用到的参数，具体公共参数如下：</p>
@@ -126,6 +128,8 @@ HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-
 <li>公共参数和每个接口所对应的<strong>查询参数</strong>按照一定的格式提交。</li>
 <li>将每个接口的查询参数（即查询这个接口所需要传入的对应参数，非公共参数）放入一个名为：<strong>payload</strong>的Map中和公共参数一起组装成提交的JSON格式。</li>
 </ul>
+
+
 
 <pre class="prettyprint"><code class=" hljs json">{
     "<span class="hljs-attribute">apiKey</span>":<span class="hljs-value"><span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span></span>,
@@ -1371,7 +1375,7 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 <h4 id="通付盾申请比对驾驶证基本信息查询"><i class="icon-pencil"></i> 通付盾申请比对驾驶证基本信息查询</h4>
 
 <p>描述：对比用户驾驶证中的各种信息（按对比信息个数收费，最少对比2条信息，最多对比8条信息，费用区间：3.2-12.8） <br>
-<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务结果查询接口</strong> <a href="#任务结果查询接口">here</a>获取本次的查询结果</p>
+<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务结果查询接口</strong> <a href="#任务结果查询">here</a>获取本次的查询结果</p>
 
 <blockquote>
   <p>公共参数： <br>
@@ -1489,7 +1493,7 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 <h4 id="通付盾申请驾驶证状态查询"><i class="icon-pencil"></i> 通付盾申请驾驶证状态查询</h4>
 
 <p>描述：查询驾驶证当前的状态 <br>
-<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务结果查询接口</strong><a href="#任务结果查询接口">here</a>获取本次的查询结果</p>
+<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务结果查询接口</strong><a href="#任务结果查询">here</a>获取本次的查询结果</p>
 
 <blockquote>
   <p>公共参数： <br>
@@ -1516,6 +1520,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 </tbody></table>
 
 </blockquote>
+
+
 
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
@@ -1603,6 +1609,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
   </ul>
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs avrasm">伪代码，仅供参考，具体参考apidemo中的示例代码。
 paramMap = {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1649,6 +1657,8 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -1659,6 +1669,8 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
 }</code></pre>
 
 <hr>
+
+
 
 <h4 id="linkface人脸识别实名认证"><i class="icon-pencil"></i> linkface人脸识别实名认证</h4>
 
@@ -1690,6 +1702,8 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
   <li>注意签名时需要将参数<strong>按照英文字母进行排序</strong>！</li>
   </ul>
 </blockquote>
+
+
 
 <pre class="prettyprint"><code class=" hljs avrasm">伪代码，仅供参考，具体参考apidemo中的示例代码。
 paramMap = {
@@ -1740,6 +1754,8 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs lasso">提交参数格式：
 
  apiKey <span class="hljs-subst">=</span> <span class="hljs-number">161</span>c5ce6<span class="hljs-subst">-</span><span class="hljs-number">7385</span><span class="hljs-subst">-</span><span class="hljs-number">48</span>db<span class="hljs-attribute">-bf68</span><span class="hljs-attribute">-bc3a8e83</span>,
@@ -1750,6 +1766,8 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
  name <span class="hljs-subst">=</span> 王xx,  <span class="hljs-comment">//注意，这里中文需要用URLEncoder.encode(name,"utf-8");进行url编码</span>
  idCard <span class="hljs-subst">=</span> <span class="hljs-number">3310</span>xxxxxxxxxxxxxxx3421
 </code></pre>
+
+
 
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功！"</span>,
