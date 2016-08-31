@@ -87,11 +87,11 @@ public class Client {
         LinkfaceRequest linkfaceRequest = new LinkfaceRequest(LINKFACEHOST, header);
 
         Map<String, Object> payload = new HashMap<>();
-        payload.put("name","王xx");
-        payload.put("idCard","33xxxxxxxxxxxxxxxxx15");
+        payload.put("name","王帅");
+        payload.put("idCard","36xxxxxxxxxxxxxxx15");
 
 
-        File file = new File("E:/20160830ce1.jpg");
+        File file = new File("E:/20160830ce4.jpg");
 
         linkfaceRequest.setPayload(payload);
         linkfaceRequest.setLivingImg(file);

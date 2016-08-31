@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by syq on 2016/8/30.
  */
-public abstract class DsCreditRequest implements RequestEntityHandler{
+public abstract class DsCreditRequest{
 
     private String host;
 
@@ -84,6 +84,9 @@ public abstract class DsCreditRequest implements RequestEntityHandler{
         }
         return responseStr;
     }
+
+
+    abstract RequestEntity handle() throws Exception;
 
 
 }
