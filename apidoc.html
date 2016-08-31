@@ -26,11 +26,11 @@
 <li><a href="#title"> </a></li>
 </ul>
 </li>
-<li><a href="#公共参数">公共参数</a></li>
+<li><a href="#固定参数说明">固定参数说明</a></li>
 <li><a href="#普通类型接口定义">普通类型接口定义</a><ul>
 <li><ul>
-<li><a href="#接口地址名称"> 接口地址名称</a></li>
-<li><a href="#请求参数格式"> 请求参数格式</a></li>
+<li><a href="#接口地址"> 接口地址</a></li>
+<li><a href="#请求参数结构"> 请求参数结构</a></li>
 <li><a href="#签名规则"> 签名规则</a></li>
 </ul>
 </li>
@@ -55,13 +55,20 @@
 <li><a href="#通付盾身份证多项校验服务接口"> 通付盾身份证多项校验服务接口</a></li>
 <li><a href="#通付盾手机在网时长查询"> 通付盾手机在网时长查询</a></li>
 <li><a href="#通付盾申请比对驾驶证基本信息查询"> 通付盾申请比对驾驶证基本信息查询</a></li>
-<li><a href="#通付盾申请查询驾驶证状态"> 通付盾申请查询驾驶证状态</a></li>
+<li><a href="#通付盾申请驾驶证状态查询"> 通付盾申请驾驶证状态查询</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#特殊接口类型定义">特殊接口类型定义</a></li>
-<li><a href="#特殊接口详情">特殊接口详情</a></li>
+<li><a href="#特殊接口详情">特殊接口详情</a><ul>
+<li><ul>
+<li><a href="#任务结果查询"> 任务结果查询</a></li>
+<li><a href="#linkface人脸识别实名认证"> linkface人脸识别实名认证</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -70,11 +77,9 @@
 
 <hr>
 
+<h2 id="固定参数说明">固定参数说明</h2>
 
-
-<h2 id="特殊参数说明">特殊参数说明</h2>
-
-<p>1.公共参数是指在普通类型的接口中都需要用到的参数，具体公共参数如下：</p>
+<p>1.<strong>公共参数</strong>是指在普通类型的接口中都需要用到的参数，具体公共参数如下：</p>
 
 <blockquote>
   <p><strong>请求公共参数</strong>： <br>
@@ -86,9 +91,9 @@
 </blockquote>
 
 <p>2.apiKey和secretKey是平台分发给每个商户使用，可在平台安全功能中的key/secret功能中获取。 <br>
-secretKey：对参数进行签名生成sign参数，请妥善保管，不可泄露！</p>
+<strong>secretKey</strong>：对参数进行签名生成sign参数，请妥善保管，不可泄露！</p>
 
-<p>3.返回的公共参数值接口调用都会返回的几个固定字段，具体参数有：</p>
+<p>3.返回的公共参数指接口调用都会返回的几个固定字段，具体参数有：</p>
 
 <blockquote>
   <p><strong>返回公共参数</strong>： <br>
@@ -96,6 +101,8 @@ secretKey：对参数进行签名生成sign参数，请妥善保管，不可泄�
   code：执行结果状态码，200为请求成功，并获取相关数据，400为某些原因导致请求失败，如参数格式错误、无相关数据等，500为服务器内部错误。401为无权限请求。 <br>
   res：查询所需的结果数据，为JSON对象类型。</p>
 </blockquote>
+
+
 
 <h2 id="普通类型接口定义">普通类型接口定义</h2>
 
@@ -105,7 +112,7 @@ HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-
 
 
 
-<h4 id="接口地址名称"><i class="icon-file"></i> 接口地址名称</h4>
+<h4 id="接口地址"><i class="icon-file"></i> 接口地址</h4>
 
 <blockquote>
   <p><a href="http://HOST/credit/api/v1/query">http://HOST/credit/api/v1/query</a></p>
@@ -113,14 +120,12 @@ HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-
 
 
 
-<h4 id="请求参数格式"><i class="icon-file"></i> 请求参数格式</h4>
+<h4 id="请求参数结构"><i class="icon-file"></i> 请求参数结构</h4>
 
 <ul>
 <li>公共参数和每个接口所对应的<strong>查询参数</strong>按照一定的格式提交。</li>
 <li>将每个接口的查询参数（即查询这个接口所需要传入的对应参数，非公共参数）放入一个名为：<strong>payload</strong>的Map中和公共参数一起组装成提交的JSON格式。</li>
 </ul>
-
-
 
 <pre class="prettyprint"><code class=" hljs json">{
     "<span class="hljs-attribute">apiKey</span>":<span class="hljs-value"><span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span></span>,
@@ -225,6 +230,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+<hr>
+
 
 
 <h4 id="有盾ip地址归属地查询"><i class="icon-pencil"></i> 有盾IP地址归属地查询</h4>
@@ -286,6 +293,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+<hr>
 
 
 
@@ -358,6 +367,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+<hr>
+
 
 
 <h4 id="有盾手机号归属地查询"><i class="icon-pencil"></i> 有盾手机号归属地查询</h4>
@@ -421,6 +432,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+<hr>
+
 
 
 <h4 id="有盾邮箱状态查询"><i class="icon-pencil"></i> 有盾邮箱状态查询</h4>
@@ -478,6 +491,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+<hr>
 
 
 
@@ -538,6 +553,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+<hr>
+
 
 
 <h4 id="有盾车辆信息查询通过车架号"><i class="icon-pencil"></i> 有盾车辆信息查询(通过车架号)</h4>
@@ -595,6 +612,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+<hr>
+
 
 
 <h4 id="有盾盗卡黑名单"><i class="icon-pencil"></i> 有盾盗卡黑名单</h4>
@@ -651,6 +670,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+<hr>
 
 
 
@@ -719,6 +740,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+<hr>
 
 
 
@@ -805,6 +828,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+<hr>
 
 
 
@@ -944,6 +969,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+<hr>
+
 
 
 <h4 id="华道退货次数查询"><i class="icon-pencil"></i> 华道退货次数查询</h4>
@@ -1009,6 +1036,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+<hr>
 
 
 
@@ -1081,6 +1110,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+<hr>
 
 
 
@@ -1164,6 +1195,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+<hr>
 
 
 
@@ -1270,6 +1303,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+<hr>
+
 
 
 <h4 id="通付盾手机在网时长查询"><i class="icon-pencil"></i> 通付盾手机在网时长查询</h4>
@@ -1329,12 +1364,14 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
 
+<hr>
+
 
 
 <h4 id="通付盾申请比对驾驶证基本信息查询"><i class="icon-pencil"></i> 通付盾申请比对驾驶证基本信息查询</h4>
 
 <p>描述：对比用户驾驶证中的各种信息（按对比信息个数收费，最少对比2条信息，最多对比8条信息，费用区间：3.2-12.8） <br>
-<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务查询接口</strong>获取本次的查询结果</p>
+<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务结果查询接口</strong> <a href="#任务结果查询接口">here</a>获取本次的查询结果</p>
 
 <blockquote>
   <p>公共参数： <br>
@@ -1432,10 +1469,27 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 
 
-<h4 id="通付盾申请查询驾驶证状态"><i class="icon-pencil"></i> 通付盾申请查询驾驶证状态</h4>
+<pre class="prettyprint"><code class=" hljs cs">通过“任务结果查询”特殊接口查询后返回的参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{  <span class="hljs-comment">//输入参数有多少，返回的匹配结果也有多少</span>
+         <span class="hljs-string">"result"</span>: <span class="hljs-string">"匹配正确"</span>,  <span class="hljs-comment">//匹配总结</span>
+         <span class="hljs-string">"jszh"</span>: <span class="hljs-string">"匹配正确"</span>,
+         <span class="hljs-string">"xm"</span>: <span class="hljs-string">"匹配正确"</span>,
+         <span class="hljs-string">"statCode"</span>: <span class="hljs-string">"0"</span>,
+         <span class="hljs-string">"msg"</span>: <span class="hljs-string">"请求成功"</span>
+    }
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<hr>
+
+
+
+<h4 id="通付盾申请驾驶证状态查询"><i class="icon-pencil"></i> 通付盾申请驾驶证状态查询</h4>
 
 <p>描述：查询驾驶证当前的状态 <br>
-<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务查询接口</strong>获取本次的查询结果</p>
+<strong>Note:</strong> 该接口是异步接口，请求之后根据获取的taskNo去<strong>任务结果查询接口</strong><a href="#任务结果查询接口">here</a>获取本次的查询结果</p>
 
 <blockquote>
   <p>公共参数： <br>
@@ -1463,8 +1517,6 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
-
-
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1490,9 +1542,228 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 
 
+<pre class="prettyprint"><code class=" hljs bash">通过“任务结果查询”特殊接口查询后返回的参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+          <span class="hljs-string">"result"</span>: <span class="hljs-string">"匹配正确"</span>,
+          <span class="hljs-string">"zt**"</span>: <span class="hljs-string">"注销"</span>,
+          <span class="hljs-string">"jszh"</span>: <span class="hljs-string">"匹配正确"</span>,
+          <span class="hljs-string">"statCode"</span>: <span class="hljs-string">"0"</span>,
+          <span class="hljs-string">"msg"</span>: <span class="hljs-string">"请求成功"</span>
+    }
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<hr>
+
+
+
 <h2 id="特殊接口类型定义">特殊接口类型定义</h2>
 
+<p>这部分接口在请求地址、请求方式和传参上有所不同，需要独立出来说明。 <br>
+签名规则不变，和普通接口的签名规则相同。</p>
 
 
-<h2 id="特殊接口详情">特殊接口详情</h2></div></body>
+
+<h2 id="特殊接口详情">特殊接口详情</h2>
+
+
+
+<h4 id="任务结果查询"><i class="icon-pencil"></i> 任务结果查询</h4>
+
+<p>描述：为异步接口提供调用结果查询。</p>
+
+<p>HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-8;  <br>
+<strong>POST</strong>提交。</p>
+
+<p><i class="icon-file"></i> 接口地址</p>
+
+<blockquote>
+  <p><a href="http://HOST/credit/api/v1/task">http://HOST/credit/api/v1/task</a></p>
+</blockquote>
+
+<p><i class="icon-file"></i> 请求参数结构</p>
+
+<ul>
+<li>公共参数将不再需要提交channelNo和interfaceName这两个参数，其他保持不变。</li>
+<li>每个接口的查询参数（即查询这个接口所需要传入的对应参数，非公共参数）放入一个名为：<strong>payload</strong>的Map中。注意，payload Map中只能填写taskNo参数作为唯一的查询参数。</li>
+<li>将公共参数和查询参数拼装成最后的JSON格式。</li>
+</ul>
+
+<p><i class="icon-file"></i> 签名规则</p>
+
+<blockquote>
+  <p><strong>Note:</strong></p>
+  
+  <ul>
+  <li>基本规则保持不变。</li>
+  <li>将公共参数（sign、channelNo、interfaceName除外）和接口对应的查询参数拼装成JSON字符串，再使用secretKey进行签名。</li>
+  <li>注意签名时需要将参数<strong>按照英文字母进行排序</strong>！</li>
+  </ul>
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs avrasm">伪代码，仅供参考，具体参考apidemo中的示例代码。
+paramMap = {
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"taskNo"</span>:<span class="hljs-string">"TA1157774850"</span>
+}
+sortMap = sort(paramMap)<span class="hljs-comment">;</span>
+sortJsonStr = Json<span class="hljs-preprocessor">.toString</span>(sortMap)<span class="hljs-comment">;</span>
+sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJsonStr,secretKey)<span class="hljs-comment">;</span></code></pre>
+
+<p><i class="icon-file"></i> 参数说明</p>
+
+<blockquote>
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">taskNo</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">异步查询返回的taskNo值</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"taskNo"</span>: <span class="hljs-string">"TA1157774850"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs cs">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+        <span class="hljs-comment">//返回每个异步接口的查询结果</span>
+    }
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<hr>
+
+<h4 id="linkface人脸识别实名认证"><i class="icon-pencil"></i> linkface人脸识别实名认证</h4>
+
+<p>描述：将自拍脸部头像照片和公安身份证中的头像照片进行对比，返回匹配度和结论。</p>
+
+<p>HTTP请求头文本格式类型为：Content-Type: <strong>multipart/form-data</strong>; <br>
+<strong>POST</strong> 表单提交。</p>
+
+<p><i class="icon-file"></i> 接口地址</p>
+
+<blockquote>
+  <p><a href="http://HOST/credit/api/v1/linkface">http://HOST/credit/api/v1/linkface</a></p>
+</blockquote>
+
+<p><i class="icon-file"></i> 请求参数结构</p>
+
+<ul>
+<li>将公共参数和查询参数按照multipart/form-data表单提交即可。</li>
+</ul>
+
+<p><i class="icon-file"></i> 签名规则</p>
+
+<blockquote>
+  <p><strong>Note:</strong></p>
+  
+  <ul>
+  <li>基本规则保持不变。</li>
+  <li>将公共参数（sign除外）和接口对应的查询参数（File类型的参数除外，如下面的“livingImg”）拼装成JSON字符串，再使用secretKey进行签名。</li>
+  <li>注意签名时需要将参数<strong>按照英文字母进行排序</strong>！</li>
+  </ul>
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs avrasm">伪代码，仅供参考，具体参考apidemo中的示例代码。
+paramMap = {
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1824755184"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"hsVerification"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"name"</span>:<span class="hljs-string">"王xx"</span>,
+    <span class="hljs-string">"idCard"</span>:<span class="hljs-string">"3310xxxxxxxxxxxxxxx3421"</span>
+}
+sortMap = sort(paramMap)<span class="hljs-comment">;</span>
+sortJsonStr = Json<span class="hljs-preprocessor">.toString</span>(sortMap)<span class="hljs-comment">;</span>
+sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJsonStr,secretKey)<span class="hljs-comment">;</span></code></pre>
+
+<p><i class="icon-file"></i> 参数说明</p>
+
+<blockquote>
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">name</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">idCard</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号码</td>
+</tr>
+<tr>
+  <td align="left">livingImg</td>
+  <td align="right">File</td>
+  <td align="center">是</td>
+  <td align="left">自拍的人脸头像图片</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs lasso">提交参数格式：
+
+ apiKey <span class="hljs-subst">=</span> <span class="hljs-number">161</span>c5ce6<span class="hljs-subst">-</span><span class="hljs-number">7385</span><span class="hljs-subst">-</span><span class="hljs-number">48</span>db<span class="hljs-attribute">-bf68</span><span class="hljs-attribute">-bc3a8e83</span>,
+ sign <span class="hljs-subst">=</span> <span class="hljs-number">72</span>c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92,
+ channelNo <span class="hljs-subst">=</span> CH1824755184,
+ interfaceName <span class="hljs-subst">=</span> hsVerification,
+ timestamp <span class="hljs-subst">=</span> <span class="hljs-number">1472367902248</span>,
+ name <span class="hljs-subst">=</span> 王xx,  <span class="hljs-comment">//注意，这里中文需要用URLEncoder.encode(name,"utf-8");进行url编码</span>
+ idCard <span class="hljs-subst">=</span> <span class="hljs-number">3310</span>xxxxxxxxxxxxxxx3421
+</code></pre>
+
+<pre class="prettyprint"><code class=" hljs cs">返回参数格式：
+<span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功！"</span>,
+    <span class="hljs-string">"res"</span>:{
+        <span class="hljs-string">"selfie"</span>:{
+            <span class="hljs-string">"image_id"</span>:<span class="hljs-string">"117882cd153b4dea94e7ebf0e196ed2e"</span>
+        },
+        <span class="hljs-string">"historical_selfie"</span>:{
+            <span class="hljs-string">"image_id"</span>:<span class="hljs-string">"6795436fa87a4d538a6bdf298025a400"</span>
+        },
+        <span class="hljs-string">"request_id"</span>:<span class="hljs-string">"TIDe7696b80a0224107986faac44dda22dc"</span>,
+        <span class="hljs-string">"status"</span>:<span class="hljs-string">"OK"</span>,
+        <span class="hljs-string">"conclusion"</span>:<span class="hljs-string">"相似度一般"</span>,
+        <span class="hljs-string">"confidence"</span>:<span class="hljs-number">0.6207534670829773</span> <span class="hljs-comment">//匹配值</span>
+    },
+<span class="hljs-string">"code"</span>:<span class="hljs-number">200</span></code></pre></div></body>
 </html>
