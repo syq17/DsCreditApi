@@ -48,7 +48,42 @@
 <li><a href="#有盾盗卡黑名单"> 有盾盗卡黑名单</a></li>
 <li><a href="#有盾实名认证人像"> 有盾实名认证（人像）</a></li>
 <li><a href="#有盾信用魔镜借款信息查询"> 有盾信用魔镜借款信息查询</a></li>
-<li><a href="#华道学历查询"> 华道学历查询</a></li>
+<li><a href="#有盾银行卡四要素查询"> 有盾银行卡四要素查询</a></li>
+<li><a href="#华道学历查询-描述查询学历程度-公共参数-channelnoch2022086619-interfacenamegetedufactqueryattribute-查询参数-字段名-类型-是否必填-描述-idcode-string-是-身份证号码-name-string-是-姓名">
+
+
+  华道学历查询 
+  描述：查询学历程度 
+  公共参数： 
+  channelNo：CH2022086619 
+  interfaceName：GetEduFactQueryAttribute
+  
+  查询参数：
+  
+  
+
+
+  字段名
+  类型
+  是否必填
+  描述
+
+
+
+  idcode
+  String
+  是
+  身份证号码
+
+
+  name
+  String
+  是
+  姓名
+
+
+
+</a></li>
 <li><a href="#华道退货次数查询"> 华道退货次数查询</a></li>
 <li><a href="#华道房车子女宠物信息查询"> 华道（房|车|子女|宠物）信息查询</a></li>
 <li><a href="#通付盾银行卡四要素验证"> 通付盾银行卡四要素验证</a></li>
@@ -76,8 +111,6 @@
 </p>
 
 <hr>
-
-
 
 <h2 id="固定参数说明">固定参数说明</h2>
 
@@ -837,12 +870,94 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 
 
-<h4 id="华道学历查询"><i class="icon-pencil"></i> 华道学历查询</h4>
+<h4 id="有盾银行卡四要素查询"><i class="icon-pencil"></i> 有盾银行卡四要素查询</h4>
 
-<p>描述：查询学历程度</p>
+<p>描述：有盾银行卡四要素（银行卡，手机号，姓名，证件号）查询</p>
 
 <blockquote>
   <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：bankCardFourQuery</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">name</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">bankNo</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">银行卡号</td>
+</tr>
+<tr>
+  <td align="left">mobile</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号码</td>
+</tr>
+<tr>
+  <td align="left">idType</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">证件类型，固定值 “01”代表身份证</td>
+</tr>
+<tr>
+  <td align="left">idNo</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"bankCardFourQuery"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+         <span class="hljs-string">"bankNo"</span>:<span class="hljs-string">"银行卡号"</span>,
+         <span class="hljs-string">"mobile"</span>:<span class="hljs-string">"手机号"</span>,
+         <span class="hljs-string">"name"</span>:<span class="hljs-string">"姓名"</span>,
+         <span class="hljs-string">"idType"</span>:<span class="hljs-string">"01"</span>,
+         <span class="hljs-string">"idNo"</span>:<span class="hljs-string">"证件号（目前只有身份证号）"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>: <span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>: {
+        <span class="hljs-string">"message"</span>: <span class="hljs-string">"一致"</span>,
+        <span class="hljs-string">"status"</span>: <span class="hljs-string">"1"</span>
+    },
+    <span class="hljs-string">"code"</span>: <span class="hljs-number">200</span>
+}</code></pre>
+
+<hr>
+
+<h4 id="华道学历查询-描述查询学历程度-公共参数-channelnoch2022086619-interfacenamegetedufactqueryattribute-查询参数-字段名-类型-是否必填-描述-idcode-string-是-身份证号码-name-string-是-姓名"><i class="icon-pencil"></i>
+
+<blockquote>
+  <p>华道学历查询 <br>
+  描述：查询学历程度 <br>
+  公共参数： <br>
   channelNo：CH2022086619 <br>
   interfaceName：GetEduFactQueryAttribute</p>
   
@@ -871,9 +986,7 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 </tr>
 </tbody></table>
 
-</blockquote>
-
-
+</blockquote></h4>
 
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
