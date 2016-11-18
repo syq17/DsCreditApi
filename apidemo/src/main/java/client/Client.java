@@ -4,7 +4,6 @@ package client;
 import credit.CreditRequest;
 import credit.Header;
 import credit.LinkfaceRequest;
-import credit.TaskRequest;
 
 import java.io.File;
 import java.util.Date;
@@ -16,15 +15,15 @@ import java.util.Map;
  */
 public class Client {
 
-    private static final String APIKEY = "161c5ce6-7385-48db-bf68-bc3a8e83";
+    private static final String APIKEY = "97706a19-bbe9-4891-b92c-c18f5ed7";
 
-    private static final String SECRETKEY = "536cee574c5d05df15b9df7b8236d53d4db96841a504f13ca462eb761152de2d";
+    private static final String SECRETKEY = "bf148b8dea1d2110627098f5ab52dc871487b938cc77ced81994ce7b9b2b071c";
 
-    private static final String APIHOST = "http://127.0.0.1:8082/credit/api/v1/query";
+    private static final String APIHOST = "http://ucapi.ucredit.erongyun.net/credit/api/v1/query";
 
-    private static final String TASKHOST = "http://127.0.0.1:8082/credit/api/v1/task";
+    private static final String GXBAPIHOST = "http://ucapi.ucredit.erongyun.net/notify/gxb/ret";
 
-    private static final String LINKFACEHOST = "http://127.0.0.1:8082/credit/api/v1/linkface";
+    private static final String LINKFACEHOST = "http://ucapi.ucredit.erongyun.net/credit/api/v1/linkface";
 
     /**
      * 普通接口调用示例
@@ -32,15 +31,19 @@ public class Client {
      * @throws Exception
      */
     private static void apiRequest() throws Exception {
-        final String channelNo = "CH1276321320";
-        final String interfaceName = "jszstatus";
+        final String channelNo = "CH1709907004";
+        final String interfaceName = "bankCardFourQuery";
         long timestamp = new Date().getTime();
         Header header = new Header(APIKEY, channelNo, interfaceName, timestamp);
 
         CreditRequest creditRequest = new CreditRequest(APIHOST, header);
 
         Map<String, Object> payload = new HashMap<>();
-        payload.put("jszh", "1305xxxxxxxxxxxx12");
+        payload.put("bankNo", "6212***********4440");//银行卡号
+        payload.put("mobile", "15858265121");
+        payload.put("name", "沈叶青");
+        payload.put("idType", "01");//01为固定值
+        payload.put("idNo", "3310********00316");//身份证号
 
         creditRequest.setPayload(payload);
 
@@ -49,27 +52,7 @@ public class Client {
         String result = creditRequest.request();
 
         System.out.println(result);
-    }
 
-    /**
-     * 任务接口调用示例
-     *
-     * @throws Exception
-     */
-    private static void taskRequest() throws Exception {
-        long timestamp = new Date().getTime();
-        Header header = new Header(APIKEY, timestamp);
-
-        TaskRequest taskRequest = new TaskRequest(TASKHOST, header);
-
-        Map<String, Object> payload = new HashMap<>();
-        payload.put("taskNo", "TA1157774850");
-
-        taskRequest.setPayload(payload);
-        taskRequest.signByKey(SECRETKEY);
-
-        String result = taskRequest.request();
-        System.out.println(result);
     }
 
 
@@ -87,11 +70,11 @@ public class Client {
         LinkfaceRequest linkfaceRequest = new LinkfaceRequest(LINKFACEHOST, header);
 
         Map<String, Object> payload = new HashMap<>();
-        payload.put("name","王帅");
-        payload.put("idCard","36xxxxxxxxxxxxxxx15");
+        payload.put("name", "周学成");
+        payload.put("idCard", "411528198811080735");
 
 
-        File file = new File("E:/20160830ce4.jpg");
+        File file = new File("E:/20160830ce2.jpg");
 
         linkfaceRequest.setPayload(payload);
         linkfaceRequest.setLivingImg(file);
@@ -105,10 +88,34 @@ public class Client {
     }
 
 
+    /**
+     * 公信宝结果信息获取接口
+     *
+     * @throws Exception
+     */
+    private static void gxbResultRequest() throws Exception {
+        long timestamp = new Date().getTime();
+        Header header = new Header(APIKEY, timestamp);
+
+        CreditRequest creditRequest = new CreditRequest(GXBAPIHOST, header);
+
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("token", "0000000000000LwoMqBlbRKnsgvMJZCW");//公信宝token
+
+        creditRequest.setPayload(payload);
+
+        creditRequest.signByKey(SECRETKEY);
+
+        String result = creditRequest.request();
+
+        System.out.println(result);
+    }
+
+
     public static void main(String[] args) throws Exception {
-//        apiRequest();
+        apiRequest();
 //        apiLinkfaceRequest();
-//        taskRequest();
+        gxbResultRequest();
     }
 
 
