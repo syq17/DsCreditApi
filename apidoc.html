@@ -83,6 +83,8 @@
 
 
 
+
+
 </a></li>
 <li><a href="#华道退货次数查询"> 华道退货次数查询</a></li>
 <li><a href="#华道房车子女宠物信息查询"> 华道（房|车|子女|宠物）信息查询</a></li>
@@ -91,6 +93,8 @@
 <li><a href="#通付盾手机在网时长查询"> 通付盾手机在网时长查询</a></li>
 <li><a href="#通付盾申请比对驾驶证基本信息查询"> 通付盾申请比对驾驶证基本信息查询</a></li>
 <li><a href="#通付盾申请驾驶证状态查询"> 通付盾申请驾驶证状态查询</a></li>
+<li><a href="#公信宝授权token获取"> 公信宝授权token获取</a></li>
+<li><a href="#公信宝授权项爬虫结果获取"> 公信宝授权项爬虫结果获取</a></li>
 </ul>
 </li>
 </ul>
@@ -111,6 +115,8 @@
 </p>
 
 <hr>
+
+
 
 <h2 id="固定参数说明">固定参数说明</h2>
 
@@ -924,6 +930,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -940,6 +948,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">返回参数格式：
 {
     <span class="hljs-string">"message"</span>: <span class="hljs-string">"请求成功"</span>,
@@ -951,6 +961,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 }</code></pre>
 
 <hr>
+
+
 
 <h4 id="华道学历查询-描述查询学历程度-公共参数-channelnoch2022086619-interfacenamegetedufactqueryattribute-查询参数-字段名-类型-是否必填-描述-idcode-string-是-身份证号码-name-string-是-姓名"><i class="icon-pencil"></i>
 
@@ -986,7 +998,9 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 </tr>
 </tbody></table>
 
-</blockquote></h4>
+</blockquote>
+
+</h4>
 
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
@@ -1677,6 +1691,137 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 <hr>
 
 
+
+<h4 id="公信宝授权token获取"><i class="icon-pencil"></i> 公信宝授权token获取</h4>
+
+<p>描述：公信宝爬虫数据查询第一步token的获取 <br>
+<strong>Note:</strong> 请求之后根据获取的token去<strong>任务结果查询接口</strong><a href="#公信宝授权项爬虫结果获取">here</a>获取本次授权项的爬虫获取的结果</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH0898174781 <br>
+  interfaceName：gxbAuthToken</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">phone</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号码</td>
+</tr>
+<tr>
+  <td align="left">name</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">idcard</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号码</td>
+</tr>
+<tr>
+  <td align="left">authItem</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">授权项（operator表示为运营商授权项，security表示为社保授权项）</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH0898174781"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"gxbAuthToken"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"phone"</span>: <span class="hljs-string">"158****5121"</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"XXX"</span>,
+        <span class="hljs-string">"idcard"</span>: <span class="hljs-string">"45XXXXXXXXXXXXXXX78"</span>,
+        <span class="hljs-string">"authItem"</span>: <span class="hljs-string">"operator"</span>
+    }
+}</code></pre>
+
+
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+        <span class="hljs-string">"token"</span>:<span class="hljs-string">"0000000000000BvSm04hNUtHEGcYMoBh"</span>
+    }
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<hr>
+
+<h4 id="公信宝授权项爬虫结果获取"><i class="icon-pencil"></i> 公信宝授权项爬虫结果获取</h4>
+
+<p>描述：根据授权接口返回的token来获取该次查询的结果 <br>
+接口地址：<a href="http://HOST/notify/gxb/ret">http://HOST/notify/gxb/ret</a></p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：null <br>
+  interfaceName：null</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">token</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">授权token</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs cs">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-keyword">null</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-keyword">null</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"token"</span>: <span class="hljs-string">"0000000000000BvSm04hNUtHEGcYMoBh"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs cs">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+        <span class="hljs-comment">//结果JSON数据</span>
+    }
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<hr>
 
 <h2 id="特殊接口类型定义">特殊接口类型定义</h2>
 
