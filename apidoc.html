@@ -47,6 +47,7 @@
 <li><a href="#有盾车辆信息查询通过车架号"> 有盾车辆信息查询(通过车架号)</a></li>
 <li><a href="#有盾盗卡黑名单"> 有盾盗卡黑名单</a></li>
 <li><a href="#有盾实名认证人像"> 有盾实名认证（人像）</a></li>
+<li><a href="#有盾简单实名认证"> 有盾简单实名认证</a></li>
 <li><a href="#有盾信用魔镜借款信息查询"> 有盾信用魔镜借款信息查询</a></li>
 <li><a href="#有盾银行卡四要素查询"> 有盾银行卡四要素查询</a></li>
 <li><a href="#华道学历查询-描述查询学历程度-公共参数-channelnoch2022086619-interfacenamegetedufactqueryattribute-查询参数-字段名-类型-是否必填-描述-idcode-string-是-身份证号码-name-string-是-姓名">
@@ -780,6 +781,72 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
            <span class="hljs-string">"status"</span>: <span class="hljs-string">"认证一致"</span>,
            <span class="hljs-string">"photo"</span>: <span class="hljs-string">"IMG1817034037.jpg"</span>,
            <span class="hljs-string">"base64Photo"</span>:<span class="hljs-string">"/9PGSEGESGDS=="</span>  <span class="hljs-comment">//图片的base64字符串</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<hr>
+
+
+
+<h4 id="有盾简单实名认证"><i class="icon-pencil"></i> 有盾简单实名认证</h4>
+
+<p>描述：验证姓名、身份证号码是否匹配。</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH1709907004 <br>
+  interfaceName：getNauth</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">name_card</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">id_card</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号码</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1709907004"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"getNauth"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"name_card"</span>:<span class="hljs-string">"杨XX"</span>,
+        <span class="hljs-string">"id_card"</span>:<span class="hljs-string">"360781xxxxxx082030"</span>
+    }
+}</code></pre>
+
+
+
+<pre class="prettyprint"><code class=" hljs bash">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+           <span class="hljs-string">"status"</span>: <span class="hljs-string">"认证一致"</span>
     },
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
@@ -1741,6 +1808,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1768,6 +1837,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 }</code></pre>
 
 <hr>
+
+
 
 <h4 id="公信宝授权项爬虫结果获取"><i class="icon-pencil"></i> 公信宝授权项爬虫结果获取</h4>
 
@@ -1800,6 +1871,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs cs">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1812,6 +1885,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"成功"</span>,
@@ -1822,6 +1897,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 }</code></pre>
 
 <hr>
+
+
 
 <h2 id="特殊接口类型定义">特殊接口类型定义</h2>
 
