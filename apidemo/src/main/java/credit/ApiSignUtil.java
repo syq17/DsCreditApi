@@ -60,6 +60,32 @@ public class ApiSignUtil {
     }
 
 
+    public static String sign(String apiKey, String secretKey, Map<String, Object> payload) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("apiKey", apiKey);
+
+        Set<String> payloadKeys = payload.keySet();
+        for (String payloadKey : payloadKeys) {
+            paramMap.put(payloadKey, payload.get(payloadKey));
+        }
+
+        JSONObject signJson = new JSONObject(true);
+        List<String> sortKeyList = sortMapKeyList(paramMap);
+        for (String key : sortKeyList) {
+            signJson.put(key, paramMap.get(key));
+        }
+        /*对sign签名进行验证*/
+        String signature = null;
+        try {
+            signature = ApiSignUtil.encodeHmacSHA256(JSON.toJSONString(signJson), secretKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return signature;
+    }
+
+
+
     public static String encodeHmacSHA256(String paramForSign, String secretKey) throws Exception {
         String signature = encodeHmacSHA256(paramForSign.getBytes(), secretKey.getBytes());
         return signature;
