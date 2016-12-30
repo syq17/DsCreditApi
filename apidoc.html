@@ -118,12 +118,12 @@
 
 <hr>
 
-<h2 id="固定参数说明">固定参数说明</h2>
+<h2 id="系统参数说明">系统参数说明</h2>
 
-<p>1.<strong>公共参数</strong>是指在普通类型的接口中都需要用到的参数，具体公共参数如下：</p>
+<p>1.<strong>系统参数</strong>是指在普通类型的接口中都需要用到的参数，具体系统参数如下：</p>
 
 <blockquote>
-  <p><strong>请求公共参数</strong>： <br>
+  <p><strong>请求系统参数</strong>： <br>
   apiKey：识别用户的作用，唯一值。 <br>
   channelNo：为查询接口的对应渠道编号。 <br>
   interfaceName：为所需查询的接口名称。 <br>
@@ -134,7 +134,7 @@
 <p>2.apiKey和secretKey是平台分发给每个商户使用，可在平台安全功能中的key/secret功能中获取。 <br>
 <strong>secretKey</strong>：对参数进行签名生成sign参数，请妥善保管，不可泄露！</p>
 
-<p>3.返回的公共参数指接口调用都会返回的几个固定字段，具体参数有：</p>
+<p>3.返回的系统参数指接口调用都会返回的几个固定字段，具体参数有：</p>
 
 <blockquote>
   <p><strong>返回公共参数</strong>： <br>
@@ -142,8 +142,6 @@
   code：执行结果状态码，200为请求成功，并获取相关数据，400为某些原因导致请求失败，如参数格式错误、无相关数据等，500为服务器内部错误。401为无权限请求。 <br>
   res：查询所需的结果数据，为JSON对象类型。</p>
 </blockquote>
-
-
 
 <h2 id="普通类型接口定义">普通类型接口定义</h2>
 
@@ -164,11 +162,9 @@ HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-
 <h4 id="请求参数结构"><i class="icon-file"></i> 请求参数结构</h4>
 
 <ul>
-<li>公共参数和每个接口所对应的<strong>查询参数</strong>按照一定的格式提交。</li>
+<li>系统参数和每个接口所对应的<strong>查询参数</strong>按照一定的格式提交。</li>
 <li>将每个接口的查询参数（即查询这个接口所需要传入的对应参数，非公共参数）放入一个名为：<strong>payload</strong>的Map中和公共参数一起组装成提交的JSON格式。</li>
 </ul>
-
-
 
 <pre class="prettyprint"><code class=" hljs json">{
     "<span class="hljs-attribute">apiKey</span>":<span class="hljs-value"><span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span></span>,
@@ -190,12 +186,10 @@ HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-
   
   <ul>
   <li>对需要传入的参数进行签名来有效防止恶意篡改的伪造请求！</li>
-  <li>将公共参数（sign除外）和每个接口对应的查询参数拼装成JSON字符串，再使用secretKey进行签名。</li>
+  <li>将系统参数（sign除外）和每个接口对应的查询参数拼装成JSON字符串，再使用secretKey进行签名。</li>
   <li>注意签名时需要将参数<strong>按照英文字母进行排序</strong>！</li>
   </ul>
 </blockquote>
-
-
 
 <pre class="prettyprint"><code class=" hljs perl">伪代码，仅供参考，具体参考apidemo中的示例代码。
 paramMap = {
