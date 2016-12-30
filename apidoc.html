@@ -143,6 +143,8 @@
   res：查询所需的结果数据，为JSON对象类型。</p>
 </blockquote>
 
+
+
 <h2 id="普通类型接口定义">普通类型接口定义</h2>
 
 <p>大部分的接口都为普通类型接口(包括同步接口和异步接口)，调用方式为<strong>POST</strong>请求; <br>
@@ -165,6 +167,8 @@ HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-
 <li>系统参数和每个接口所对应的<strong>查询参数</strong>按照一定的格式提交。</li>
 <li>将每个接口的查询参数（即查询这个接口所需要传入的对应参数，非公共参数）放入一个名为：<strong>payload</strong>的Map中和公共参数一起组装成提交的JSON格式。</li>
 </ul>
+
+
 
 <pre class="prettyprint"><code class=" hljs json">{
     "<span class="hljs-attribute">apiKey</span>":<span class="hljs-value"><span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span></span>,
@@ -190,6 +194,8 @@ HTTP请求头文本格式类型为：Content-Type: application/json;charset=UTF-
   <li>注意签名时需要将参数<strong>按照英文字母进行排序</strong>！</li>
   </ul>
 </blockquote>
+
+
 
 <pre class="prettyprint"><code class=" hljs perl">伪代码，仅供参考，具体参考apidemo中的示例代码。
 paramMap = {
@@ -1336,6 +1342,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1348,6 +1356,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -1359,6 +1369,8 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 }</code></pre>
 
 <hr>
+
+
 
 <h4 id="通付盾银行卡四要素验证"><i class="icon-pencil"></i> 通付盾银行卡四要素验证</h4>
 
