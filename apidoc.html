@@ -1313,6 +1313,60 @@ sign = signUtil.encodeHmacSHA256(sortJsonStr,secretKey);</code></pre>
 
 
 
+<h4 id="华道-黑名单-查询"><i class="icon-pencil"></i> 华道 黑名单 查询</h4>
+
+<p>描述：查询手机号码是否存在于网贷黑名单中</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：CH2022086619 <br>
+  interfaceName：IS_Be_Overdue_Black</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">Phone</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">手机号码</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH2022086619"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"IS_Be_Overdue_Black"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"Phone"</span>: <span class="hljs-string">"15800000000"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs cs">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>:{
+            <span class="hljs-string">"IS_BLACK"</span>: <span class="hljs-string">"号码在黑名单中"</span>,
+            <span class="hljs-string">"status"</span>: <span class="hljs-string">"1"</span> <span class="hljs-comment">//1代表存在黑名单，2代表不存在</span>
+    },
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<hr>
+
 <h4 id="通付盾银行卡四要素验证"><i class="icon-pencil"></i> 通付盾银行卡四要素验证</h4>
 
 <p>描述：查询银行卡号码，姓名，身份证号，办卡时绑定的手机号码来验证</p>
