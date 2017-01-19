@@ -19,68 +19,6 @@
 
 <h3 id="title"> </h3>
 
-<p><div class="toc">
-<ul>
-<li><a href="#dscreditapi-接口调用说明">DsCreditApi 接口调用说明</a><ul>
-<li><ul>
-<li><a href="#title"> </a></li>
-</ul>
-</li>
-<li><a href="#系统参数说明">系统参数说明</a></li>
-<li><a href="#普通类型接口定义">普通类型接口定义</a><ul>
-<li><ul>
-<li><a href="#接口地址"> 接口地址</a></li>
-<li><a href="#请求参数结构"> 请求参数结构</a></li>
-<li><a href="#签名规则"> 签名规则</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#普通接口详情">普通接口详情</a><ul>
-<li><ul>
-<li><a href="#有盾银行卡bin归属查询"> 有盾银行卡bin归属查询</a></li>
-<li><a href="#有盾ip地址归属地查询"> 有盾IP地址归属地查询</a></li>
-<li><a href="#有盾网贷黑名单查询"> 有盾网贷黑名单查询</a></li>
-<li><a href="#有盾手机号归属地查询"> 有盾手机号归属地查询</a></li>
-<li><a href="#有盾邮箱状态查询"> 有盾邮箱状态查询</a></li>
-<li><a href="#有盾身份证泄漏查询"> 有盾身份证泄漏查询</a></li>
-<li><a href="#有盾车辆信息查询通过车架号"> 有盾车辆信息查询(通过车架号)</a></li>
-<li><a href="#有盾盗卡黑名单"> 有盾盗卡黑名单</a></li>
-<li><a href="#有盾实名认证人像"> 有盾实名认证（人像）</a></li>
-<li><a href="#有盾简单实名认证"> 有盾简单实名认证</a></li>
-<li><a href="#有盾信用魔镜借款信息查询"> 有盾信用魔镜借款信息查询</a></li>
-<li><a href="#有盾银行卡四要素查询"> 有盾银行卡四要素查询</a></li>
-<li></li>
-<li><a href="#华道退货次数查询"> 华道退货次数查询</a></li>
-<li><a href="#华道房车子女宠物信息查询"> 华道（房|车|子女|宠物）信息查询</a></li>
-<li><a href="#华道-黑名单-查询"> 华道 黑名单 查询</a></li>
-<li><a href="#通付盾银行卡四要素验证"> 通付盾银行卡四要素验证</a></li>
-<li><a href="#通付盾身份证多项校验服务接口"> 通付盾身份证多项校验服务接口</a></li>
-<li><a href="#通付盾手机在网时长查询"> 通付盾手机在网时长查询</a></li>
-<li><a href="#通付盾申请比对驾驶证基本信息查询"> 通付盾申请比对驾驶证基本信息查询</a></li>
-<li><a href="#通付盾申请驾驶证状态查询"> 通付盾申请驾驶证状态查询</a></li>
-<li><a href="#公信宝授权token获取"> 公信宝授权token获取</a></li>
-<li><a href="#公信宝授权项爬虫结果获取"> 公信宝授权项爬虫结果获取</a></li>
-<li><a href="#黑名单不良信息组合接口"> 黑名单+不良信息组合接口</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#特殊接口类型定义">特殊接口类型定义</a></li>
-<li><a href="#特殊接口详情">特殊接口详情</a><ul>
-<li><ul>
-<li><a href="#任务结果查询"> 任务结果查询</a></li>
-<li><a href="#linkface人脸识别实名认证"> linkface人脸识别实名认证</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</p>
-
 <hr>
 
 <h2 id="系统参数说明">系统参数说明</h2>
@@ -1301,7 +1239,7 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
 
 
 
-<h4 id="华道-黑名单-查询"><i class="icon-pencil"></i> 华道 黑名单 查询</h4>
+<h4 id="华道-网贷-黑名单-查询"><i class="icon-pencil"></i> 华道 网贷 黑名单 查询</h4>
 
 <p>描述：查询手机号码是否存在于网贷黑名单中</p>
 
@@ -1330,8 +1268,6 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
 </tbody></table>
 
 </blockquote>
-
-
 
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
@@ -1380,7 +1316,89 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
 
 <hr>
 
+<h4 id="维氏盾-不良信息-查询"><i class="icon-pencil"></i> 维氏盾 不良信息 查询</h4>
 
+<p>描述：查询手机号码是否存在于网贷黑名单中</p>
+
+<blockquote>
+  <p>公共参数： <br>
+  channelNo：    CH0055576693 <br>
+  interfaceName：WstGetPersonBadInfo</p>
+  
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">name</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">姓名</td>
+</tr>
+<tr>
+  <td align="left">idNumber</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">身份证号</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs bash">提交参数格式：
+{
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH0055576693"</span>,
+    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"WstGetPersonBadInfo"</span>,
+    <span class="hljs-string">"sign"</span>:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span>:{
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"老王"</span>,
+        <span class="hljs-string">"idNumber"</span>:<span class="hljs-string">"320681********1234"</span>
+    }
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs cs">返回参数格式：
+{
+    <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
+    <span class="hljs-string">"res"</span>: {
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"老王"</span>,
+      <span class="hljs-string">"crimetime"</span>: <span class="hljs-string">"2013-12-17 17:48:01/2008-11-26 00:00:00/2008-11-25 00:00:00/"</span>,
+      <span class="hljs-string">"hethercrime"</span>: <span class="hljs-string">"比中前科"</span>,   <span class="hljs-comment">//不良信息具体内容</span>
+      <span class="hljs-string">"idNumber"</span>: <span class="hljs-string">"320681********1234"</span>,
+      <span class="hljs-string">"status"</span>:<span class="hljs-string">"1"</span>   <span class="hljs-comment">//0代表无不良记录，1代表有不良记录</span>
+   }
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs lasso">JAVA代码示例：
+final <span class="hljs-built_in">String</span> APIHOST <span class="hljs-subst">=</span> <span class="hljs-string">"http://&lt;HOST&gt;/credit/api/v1/query"</span>;
+final <span class="hljs-built_in">String</span> APIHOST <span class="hljs-subst">=</span> <span class="hljs-string">"http://&lt;HOST&gt;/credit/api/mock/query"</span>;<span class="hljs-comment">//测试接口地址</span>
+final <span class="hljs-built_in">String</span> APIKEY <span class="hljs-subst">=</span> <span class="hljs-string">"&lt;apiKey&gt;"</span>;
+final <span class="hljs-built_in">String</span> SECRETKEY <span class="hljs-subst">=</span> <span class="hljs-string">"&lt;apiSecretKey&gt;"</span>;
+
+final <span class="hljs-built_in">String</span> channelNo <span class="hljs-subst">=</span> <span class="hljs-string">"CH0055576693"</span>;
+final <span class="hljs-built_in">String</span> interfaceName <span class="hljs-subst">=</span> <span class="hljs-string">"WstGetPersonBadInfo"</span>;
+long timestamp <span class="hljs-subst">=</span> <span class="hljs-literal">new</span> <span class="hljs-built_in">Date</span>()<span class="hljs-built_in">.</span>getTime();
+
+<span class="hljs-keyword">Header</span> <span class="hljs-keyword">header</span> <span class="hljs-subst">=</span> <span class="hljs-literal">new</span> <span class="hljs-keyword">Header</span>(APIKEY, channelNo, interfaceName, timestamp);
+CreditRequest creditRequest <span class="hljs-subst">=</span> <span class="hljs-literal">new</span> CreditRequest(APIHOST, <span class="hljs-keyword">header</span>);
+<span class="hljs-built_in">Map</span><span class="hljs-subst">&lt;</span><span class="hljs-built_in">String</span>, Object<span class="hljs-subst">&gt;</span> payload <span class="hljs-subst">=</span> <span class="hljs-literal">new</span> HashMap<span class="hljs-subst">&lt;&gt;</span>();
+payload<span class="hljs-built_in">.</span>put(<span class="hljs-string">"name"</span>, <span class="hljs-string">"老王"</span>);
+payload<span class="hljs-built_in">.</span>put(<span class="hljs-string">"idNumber"</span>, <span class="hljs-string">"320681********1234"</span>);
+creditRequest<span class="hljs-built_in">.</span>setPayload(payload);
+creditRequest<span class="hljs-built_in">.</span>signByKey(SECRETKEY);
+<span class="hljs-built_in">String</span> result <span class="hljs-subst">=</span> creditRequest<span class="hljs-built_in">.</span>request();
+System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span>println(result);</code></pre>
+
+<hr>
 
 <h4 id="通付盾银行卡四要素验证"><i class="icon-pencil"></i> 通付盾银行卡四要素验证</h4>
 
@@ -2016,6 +2034,8 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs cs">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -2030,6 +2050,8 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
         <span class="hljs-string">"cardno"</span>:<span class="hljs-string">"43138***********73"</span>
     }
 }</code></pre>
+
+
 
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
@@ -2073,6 +2095,8 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
     ]
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs lasso">JAVA代码示例：
 final <span class="hljs-built_in">String</span> APIHOST <span class="hljs-subst">=</span> <span class="hljs-string">"http://&lt;HOST&gt;/credit/api/v1/query"</span>;
 final <span class="hljs-built_in">String</span> APIKEY <span class="hljs-subst">=</span> <span class="hljs-string">"&lt;apiKey&gt;"</span>;
@@ -2091,6 +2115,8 @@ creditRequest<span class="hljs-built_in">.</span>setPayload(payload);
 creditRequest<span class="hljs-built_in">.</span>signByKey(SECRETKEY);
 <span class="hljs-built_in">String</span> result <span class="hljs-subst">=</span> creditRequest<span class="hljs-built_in">.</span>request();
 System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span>println(result);</code></pre>
+
+
 
 <h2 id="特殊接口类型定义">特殊接口类型定义</h2>
 
