@@ -19,69 +19,6 @@
 
 <h3 id="title"> </h3>
 
-<p><div class="toc">
-<ul>
-<li><a href="#dscreditapi-接口调用说明">DsCreditApi 接口调用说明</a><ul>
-<li><ul>
-<li><a href="#title"> </a></li>
-</ul>
-</li>
-<li><a href="#系统参数说明">系统参数说明</a></li>
-<li><a href="#普通类型接口定义">普通类型接口定义</a><ul>
-<li><ul>
-<li><a href="#接口地址"> 接口地址</a></li>
-<li><a href="#请求参数结构"> 请求参数结构</a></li>
-<li><a href="#签名规则"> 签名规则</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#普通接口详情">普通接口详情</a><ul>
-<li><ul>
-<li><a href="#有盾银行卡bin归属查询"> 有盾银行卡bin归属查询</a></li>
-<li><a href="#有盾ip地址归属地查询"> 有盾IP地址归属地查询</a></li>
-<li><a href="#有盾网贷黑名单查询"> 有盾网贷黑名单查询</a></li>
-<li><a href="#有盾手机号归属地查询"> 有盾手机号归属地查询</a></li>
-<li><a href="#有盾邮箱状态查询"> 有盾邮箱状态查询</a></li>
-<li><a href="#有盾身份证泄漏查询"> 有盾身份证泄漏查询</a></li>
-<li><a href="#有盾车辆信息查询通过车架号"> 有盾车辆信息查询(通过车架号)</a></li>
-<li><a href="#有盾盗卡黑名单"> 有盾盗卡黑名单</a></li>
-<li><a href="#有盾实名认证人像"> 有盾实名认证（人像）</a></li>
-<li><a href="#有盾简单实名认证"> 有盾简单实名认证</a></li>
-<li><a href="#有盾信用魔镜借款信息查询"> 有盾信用魔镜借款信息查询</a></li>
-<li><a href="#有盾银行卡四要素查询"> 有盾银行卡四要素查询</a></li>
-<li></li>
-<li><a href="#华道退货次数查询"> 华道退货次数查询</a></li>
-<li><a href="#华道房车子女宠物信息查询"> 华道（房|车|子女|宠物）信息查询</a></li>
-<li><a href="#华道-网贷-黑名单-查询"> 华道 网贷 黑名单 查询</a></li>
-<li><a href="#维氏盾-不良信息-查询"> 维氏盾 不良信息 查询</a></li>
-<li><a href="#通付盾银行卡四要素验证"> 通付盾银行卡四要素验证</a></li>
-<li><a href="#通付盾身份证多项校验服务接口"> 通付盾身份证多项校验服务接口</a></li>
-<li><a href="#通付盾手机在网时长查询"> 通付盾手机在网时长查询</a></li>
-<li><a href="#通付盾申请比对驾驶证基本信息查询"> 通付盾申请比对驾驶证基本信息查询</a></li>
-<li><a href="#通付盾申请驾驶证状态查询"> 通付盾申请驾驶证状态查询</a></li>
-<li><a href="#公信宝授权token获取"> 公信宝授权token获取</a></li>
-<li><a href="#公信宝授权项爬虫结果获取"> 公信宝授权项爬虫结果获取</a></li>
-<li><a href="#黑名单不良信息组合接口"> 黑名单+不良信息组合接口</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#特殊接口类型定义">特殊接口类型定义</a></li>
-<li><a href="#特殊接口详情">特殊接口详情</a><ul>
-<li><ul>
-<li><a href="#任务结果查询"> 任务结果查询</a></li>
-<li><a href="#linkface人脸识别实名认证"> linkface人脸识别实名认证</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</p>
-
 <hr>
 
 <h2 id="系统参数说明">系统参数说明</h2>
@@ -1332,6 +1269,8 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1379,6 +1318,8 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
 
 <hr>
 
+
+
 <h4 id="维氏盾-不良信息-查询"><i class="icon-pencil"></i> 维氏盾 不良信息 查询</h4>
 
 <p>描述：查询手机号码是否存在于网贷黑名单中</p>
@@ -1415,6 +1356,8 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
 
 </blockquote>
 
+
+
 <pre class="prettyprint"><code class=" hljs bash">提交参数格式：
 {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
@@ -1428,6 +1371,8 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
     }
 }</code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
 {
     <span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功"</span>,
@@ -1440,6 +1385,8 @@ System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span
    }
     <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
 }</code></pre>
+
+
 
 <pre class="prettyprint"><code class=" hljs lasso">JAVA代码示例：
 final <span class="hljs-built_in">String</span> APIHOST <span class="hljs-subst">=</span> <span class="hljs-string">"http://&lt;HOST&gt;/credit/api/v1/query"</span>;
@@ -1462,6 +1409,8 @@ creditRequest<span class="hljs-built_in">.</span>signByKey(SECRETKEY);
 System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span>println(result);</code></pre>
 
 <hr>
+
+
 
 <h4 id="通付盾银行卡四要素验证"><i class="icon-pencil"></i> 通付盾银行卡四要素验证</h4>
 
@@ -2290,7 +2239,7 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
 
 <h4 id="linkface人脸识别实名认证"><i class="icon-pencil"></i> linkface人脸识别实名认证</h4>
 
-<p>描述：将自拍脸部头像照片和公安身份证中的头像照片进行对比，返回匹配度和结论。</p>
+<p>描述：将自拍脸部头像照片和身份证头像照片进行对比，返回匹配度和结论。</p>
 
 <p>HTTP请求头文本格式类型为：Content-Type: <strong>multipart/form-data</strong>; <br>
 <strong>POST</strong> 表单提交。</p>
@@ -2298,7 +2247,7 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
 <p><i class="icon-file"></i> 接口地址</p>
 
 <blockquote>
-  <p><a href="http://HOST/credit/api/v1/linkface">http://HOST/credit/api/v1/linkface</a></p>
+  <p><a href="http://HOST/linkface/hsVerification">http://HOST/linkface/hsVerification</a></p>
 </blockquote>
 
 <p><i class="icon-file"></i> 请求参数结构</p>
@@ -2319,13 +2268,9 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
   </ul>
 </blockquote>
 
-
-
 <pre class="prettyprint"><code class=" hljs avrasm">伪代码，仅供参考，具体参考apidemo中的示例代码。
 paramMap = {
     <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
-    <span class="hljs-string">"channelNo"</span>:<span class="hljs-string">"CH1824755184"</span>,
-    <span class="hljs-string">"interfaceName"</span>:<span class="hljs-string">"hsVerification"</span>,
     <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
     <span class="hljs-string">"name"</span>:<span class="hljs-string">"王xx"</span>,
     <span class="hljs-string">"idCard"</span>:<span class="hljs-string">"3310xxxxxxxxxxxxxxx3421"</span>
@@ -2337,7 +2282,7 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
 <p><i class="icon-file"></i> 参数说明</p>
 
 <blockquote>
-  <p>查询参数：</p>
+  <p>提交参数：</p>
   
   <table>
 <thead>
@@ -2361,33 +2306,54 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
   <td align="left">身份证号码</td>
 </tr>
 <tr>
+  <td align="left">apiKey</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">apikey</td>
+</tr>
+<tr>
+  <td align="left">timestamp</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">时间戳</td>
+</tr>
+<tr>
   <td align="left">livingImg</td>
   <td align="right">File</td>
   <td align="center">是</td>
   <td align="left">自拍的人脸头像图片</td>
 </tr>
+<tr>
+  <td align="left">ocrImg</td>
+  <td align="right">File</td>
+  <td align="center">是</td>
+  <td align="left">身份证上头像照片</td>
+</tr>
+<tr>
+  <td align="left">sign</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">签名</td>
+</tr>
 </tbody></table>
 
 </blockquote>
 
+<pre class="prettyprint"><code class=" hljs avrasm">提交参数格式：
 
-
-<pre class="prettyprint"><code class=" hljs lasso">提交参数格式：
-
- apiKey <span class="hljs-subst">=</span> <span class="hljs-number">161</span>c5ce6<span class="hljs-subst">-</span><span class="hljs-number">7385</span><span class="hljs-subst">-</span><span class="hljs-number">48</span>db<span class="hljs-attribute">-bf68</span><span class="hljs-attribute">-bc3a8e83</span>,
- sign <span class="hljs-subst">=</span> <span class="hljs-number">72</span>c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92,
- channelNo <span class="hljs-subst">=</span> CH1824755184,
- interfaceName <span class="hljs-subst">=</span> hsVerification,
- timestamp <span class="hljs-subst">=</span> <span class="hljs-number">1472367902248</span>,
- name <span class="hljs-subst">=</span> 王xx,  <span class="hljs-comment">//注意，这里中文需要用URLEncoder.encode(name,"utf-8");进行url编码</span>
- idCard <span class="hljs-subst">=</span> <span class="hljs-number">3310</span>xxxxxxxxxxxxxxx3421
+ apiKey = <span class="hljs-number">161</span>c5ce6-<span class="hljs-number">7385</span>-<span class="hljs-number">48</span>db-bf68-bc3a8e83,
+ sign = <span class="hljs-number">72</span>c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92,
+ channelNo = CH1824755184,
+ livingImg = xxxx<span class="hljs-preprocessor">.jpg</span>,
+ ocrImg = xxxx<span class="hljs-preprocessor">.jpg</span>,
+ timestamp = <span class="hljs-number">1472367902248</span>,
+ name = 王xx,  //注意，这里中文需要用URLEncoder<span class="hljs-preprocessor">.encode</span>(name,<span class="hljs-string">"utf-8"</span>)<span class="hljs-comment">;进行url编码</span>
+ idCard = <span class="hljs-number">3310</span>xxxxxxxxxxxxxxx3421
 </code></pre>
 
-
-
 <pre class="prettyprint"><code class=" hljs cs">返回参数格式：
-<span class="hljs-string">"message"</span>:<span class="hljs-string">"请求成功！"</span>,
-    <span class="hljs-string">"res"</span>:{
+<span class="hljs-string">"msg"</span>:<span class="hljs-string">"请求成功！"</span>,
+    <span class="hljs-string">"data"</span>:{
         <span class="hljs-string">"selfie"</span>:{
             <span class="hljs-string">"image_id"</span>:<span class="hljs-string">"117882cd153b4dea94e7ebf0e196ed2e"</span>
         },
@@ -2396,8 +2362,151 @@ sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJson
         },
         <span class="hljs-string">"request_id"</span>:<span class="hljs-string">"TIDe7696b80a0224107986faac44dda22dc"</span>,
         <span class="hljs-string">"status"</span>:<span class="hljs-string">"OK"</span>,
-        <span class="hljs-string">"conclusion"</span>:<span class="hljs-string">"相似度一般"</span>,
         <span class="hljs-string">"confidence"</span>:<span class="hljs-number">0.6207534670829773</span> <span class="hljs-comment">//匹配值</span>
     },
-<span class="hljs-string">"code"</span>:<span class="hljs-number">200</span></code></pre></div></body>
+<span class="hljs-string">"code"</span>:<span class="hljs-number">200</span></code></pre>
+
+
+
+<pre class="prettyprint"><code class=" hljs vhdl">JAVA示例代码：
+<span class="hljs-typename">String</span> LINKFACEHOST = <span class="hljs-string">"http://&lt;HOST&gt;/linkface/hsVerification"</span>;
+long timestamp = <span class="hljs-keyword">new</span> Date().getTime();
+Header header = <span class="hljs-keyword">new</span> Header(APIKEY, timestamp);
+LinkfaceHsRequest linkfaceRequest = <span class="hljs-keyword">new</span> LinkfaceHsRequest(LINKFACEHOST, header);
+<span class="hljs-keyword">File</span> livingImgfile = <span class="hljs-keyword">new</span> <span class="hljs-keyword">File</span>(<span class="hljs-string">"E:/20160824ce5.jpg"</span>);
+<span class="hljs-keyword">File</span> ocrImgfile = <span class="hljs-keyword">new</span> <span class="hljs-keyword">File</span>(<span class="hljs-string">"E:/20160825ce1.jpg"</span>);
+
+linkfaceRequest.setLivingImg(livingImgfile);
+linkfaceRequest.setOcrImg(ocrImgfile);
+linkfaceRequest.setName(<span class="hljs-string">"老王"</span>);
+linkfaceRequest.setIdCard(<span class="hljs-string">"431381198109106573"</span>);
+
+linkfaceRequest.signByKey(SECRETKEY);
+
+<span class="hljs-typename">String</span> result = linkfaceRequest.request();
+System.<span class="hljs-keyword">out</span>.println(result);</code></pre>
+
+<hr>
+
+
+
+<h4 id="上数运营商数据查询"><i class="icon-pencil"></i> 上数运营商数据查询</h4>
+
+<p>描述：跳转H5页面，完成授权操作，异步推送爬取的通话记录数据。</p>
+
+<p>HTTP请求头文本格式类型为：Content-Type: <strong>application/json;charset=UTF-8</strong>; <br>
+<strong>POST</strong> 提交。</p>
+
+<p><i class="icon-file"></i> 接口地址</p>
+
+<blockquote>
+  <p><a href="http://HOST/credit/api/v1.5/query">http://HOST/credit/api/v1.5/query</a></p>
+</blockquote>
+
+<p><i class="icon-file"></i> 请求参数结构</p>
+
+<ul>
+<li>公共参数将不再需要提交channelNo和interfaceName这两个参数，其他保持不变。</li>
+<li>每个接口的查询参数（即查询这个接口所需要传入的对应参数，非公共参数）放入一个名为：<strong>payload</strong>的Map中。注意，payload Map中只能填写taskNo参数作为唯一的查询参数。</li>
+<li>将公共参数和查询参数拼装成最后的JSON格式。</li>
+</ul>
+
+<p><i class="icon-file"></i> 签名规则</p>
+
+<blockquote>
+  <p><strong>Note:</strong></p>
+  
+  <ul>
+  <li>基本规则保持不变。</li>
+  <li>将公共参数（sign、channelNo、interfaceName除外）和接口对应的查询参数拼装成JSON字符串，再使用secretKey进行签名。</li>
+  <li>注意签名时需要将参数<strong>按照英文字母进行排序</strong>！</li>
+  </ul>
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs avrasm">伪代码，仅供参考，具体参考apidemo中的示例代码。
+paramMap = {
+    <span class="hljs-string">"apiKey"</span>:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span>,
+    <span class="hljs-string">"timestamp"</span>:<span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"prodCode"</span>:<span class="hljs-string">"OPERATOR"</span>,
+    <span class="hljs-string">"notifyUrl"</span>:<span class="hljs-string">"http://xxxx.com/receive"</span>
+}
+sortMap = sort(paramMap)<span class="hljs-comment">;</span>
+sortJsonStr = Json<span class="hljs-preprocessor">.toString</span>(sortMap)<span class="hljs-comment">;</span>
+sign = signUtil<span class="hljs-preprocessor">.encodeHmacSHA</span>256(sortJsonStr,secretKey)<span class="hljs-comment">;</span></code></pre>
+
+<p><i class="icon-file"></i> 参数说明 <br>
+公共参数：  <br>
+channelNo：CH0673607634 <br>
+interfaceName：buildAuthCollItemListUrl</p>
+
+<blockquote>
+  <p>查询参数：</p>
+  
+  <table>
+<thead>
+<tr>
+  <th align="left">字段名</th>
+  <th align="right">类型</th>
+  <th align="center">是否必填</th>
+  <th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">prodCode</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">查询项，固定值 OPERATOR</td>
+</tr>
+<tr>
+  <td align="left">notifyUrl</td>
+  <td align="right">String</td>
+  <td align="center">是</td>
+  <td align="left">数据回调地址</td>
+</tr>
+</tbody></table>
+
+</blockquote>
+
+<pre class="prettyprint"><code class=" hljs ruby">提交参数格式：
+
+ {
+    <span class="hljs-string">"apiKey"</span><span class="hljs-symbol">:<span class="hljs-string">"161c5ce6-7385-48db-bf68-bc3a8e83"</span></span>,
+    <span class="hljs-string">"channelNo"</span><span class="hljs-symbol">:CH0673607634</span>,
+    <span class="hljs-string">"interfaceName"</span><span class="hljs-symbol">:buildAuthCollItemListUrl</span>,
+    <span class="hljs-string">"sign"</span><span class="hljs-symbol">:<span class="hljs-string">"72c787c60792445fbe9e9e1276f5ef7e0161c7e1889bfb92"</span></span>,
+    <span class="hljs-string">"timestamp"</span><span class="hljs-symbol">:</span><span class="hljs-number">1472367902248</span>,
+    <span class="hljs-string">"payload"</span><span class="hljs-symbol">:</span>{
+        <span class="hljs-string">"prodCode"</span><span class="hljs-symbol">:<span class="hljs-string">"OPERATOR "</span></span>,
+        <span class="hljs-string">"notifyUrl"</span><span class="hljs-symbol">:<span class="hljs-string">"http://xxxx.com/receive"</span></span>
+    }
+}
+</code></pre>
+
+<pre class="prettyprint"><code class=" hljs cs">返回参数格式：
+{
+    <span class="hljs-string">"res"</span>:{
+        <span class="hljs-string">"orderNo"</span>:<span class="hljs-string">"201702170783426147"</span>,
+        <span class="hljs-string">"url"</span>:<span class="hljs-string">"https://openapi.shulidata.com/gateway.do?xxx"</span>  <span class="hljs-comment">//需要跳转的上数H5页面地址</span>
+    },
+    <span class="hljs-string">"orderNo"</span>:<span class="hljs-string">"201702170783426147"</span>,
+    <span class="hljs-string">"code"</span>:<span class="hljs-number">200</span>
+}</code></pre>
+
+<pre class="prettyprint"><code class=" hljs lasso">JAVA示例代码：
+final <span class="hljs-built_in">String</span> APIHOST <span class="hljs-subst">=</span> <span class="hljs-string">"http://&lt;HOST&gt;/credit/api/v1.5/query"</span>;
+
+final <span class="hljs-built_in">String</span> channelNo <span class="hljs-subst">=</span> <span class="hljs-string">"CH0673607634"</span>;
+final <span class="hljs-built_in">String</span> interfaceName <span class="hljs-subst">=</span> <span class="hljs-string">"buildAuthCollItemListUrl"</span>;
+long timestamp <span class="hljs-subst">=</span> <span class="hljs-literal">new</span> <span class="hljs-built_in">Date</span>()<span class="hljs-built_in">.</span>getTime();
+<span class="hljs-keyword">Header</span> <span class="hljs-keyword">header</span> <span class="hljs-subst">=</span> <span class="hljs-literal">new</span> <span class="hljs-keyword">Header</span>(APIKEY, channelNo, interfaceName, timestamp);
+
+CreditRequest creditRequest <span class="hljs-subst">=</span> <span class="hljs-literal">new</span> CreditRequest(APIHOST, <span class="hljs-keyword">header</span>);
+
+<span class="hljs-built_in">Map</span><span class="hljs-subst">&lt;</span><span class="hljs-built_in">String</span>, Object<span class="hljs-subst">&gt;</span> payload <span class="hljs-subst">=</span> <span class="hljs-literal">new</span> HashMap<span class="hljs-subst">&lt;&gt;</span>();
+payload<span class="hljs-built_in">.</span>put(<span class="hljs-string">"prodCode"</span>, <span class="hljs-string">"OPERATOR"</span>);<span class="hljs-comment">//OPERATOR 为运营商</span>
+payload<span class="hljs-built_in">.</span>put(<span class="hljs-string">"notifyUrl"</span>, <span class="hljs-string">"自己的回调地址"</span>);<span class="hljs-comment">//用户回调的接口地址，当获取通话记录的时候，会调用该接口，将数据推送至你的服务器</span>
+creditRequest<span class="hljs-built_in">.</span>setPayload(payload);
+creditRequest<span class="hljs-built_in">.</span>signByKey(SECRETKEY);
+<span class="hljs-built_in">String</span> result <span class="hljs-subst">=</span> creditRequest<span class="hljs-built_in">.</span>request();
+System<span class="hljs-built_in">.</span>out<span class="hljs-built_in">.</span>println(result);</code></pre></div></body>
 </html>
