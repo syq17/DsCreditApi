@@ -4,14 +4,13 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Map;
 
 /**
  * Created by syq on 2016/8/30.
  */
-public abstract class DsCreditRequest{
+public abstract class DsCreditRequest {
 
     private String host;
 
@@ -87,6 +86,25 @@ public abstract class DsCreditRequest{
 
 
     abstract RequestEntity handle() throws Exception;
+
+    protected byte[] getBytes(File file) {
+        byte[] buffer = null;
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream(1000);
+            byte[] b = new byte[1000];
+            int n;
+            while ((n = fis.read(b)) != -1) {
+                bos.write(b, 0, n);
+            }
+            fis.close();
+            bos.close();
+            buffer = bos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return buffer;
+    }
 
 
 }
