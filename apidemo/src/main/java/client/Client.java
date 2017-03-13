@@ -15,9 +15,9 @@ import java.util.Map;
  */
 public class Client {
 
-    private static final String APIKEY = "自己的apikey";
+    private static final String APIKEY = "bfde3396-3956-4fab-bc73-9b015026";
 
-    private static final String SECRETKEY = "自己的secretkey";
+    private static final String SECRETKEY = "cab3f18c37712ec6cef1dce6e3ca79bca7b605e3ca42f889ba12ca0ab94a6c1c";
 
 
     /**
@@ -26,7 +26,7 @@ public class Client {
      * @throws Exception
      */
     private static void apiBankCardRequest() throws Exception {
-        final String APIHOST = "http://127.0.0.1:8082/credit/api/mock/query";
+        final String APIHOST = "http://ucdevapi.ucredit.erongyun.net/credit/api/mock/query";
 //        String APIHOST = "http://127.0.0.1:8082/credit/api/v1/query";
 
         final String channelNo = "CH1709907004";
@@ -151,7 +151,7 @@ public class Client {
      * @throws Exception
      */
     private static void shulidataRequest() throws Exception {
-        final String APIHOST = "http://127.0.0.1:8082/credit/api/v1.5/query";
+        final String APIHOST = "http://ucdevapi.ucredit.erongyun.net/credit/api/v1.5/query";
 //        APIHOST = "http://127.0.0.1:8082/credit/api/v1.5/query";
 
         final String channelNo = "CH0673607634";
@@ -163,7 +163,7 @@ public class Client {
 
         Map<String, Object> payload = new HashMap<>();
         payload.put("prodCode", "OPERATOR");//OPERATOR 为运营商
-        payload.put("notifyUrl", "自己的回调地址");//用户回调的接口地址，当获取通话记录的时候，会调用该接口，将数据推送至你的服务器
+//        payload.put("notifyUrl", "自己的回调地址");//用户回调的接口地址，当获取通话记录的时候，会调用该接口，将数据推送至你的服务器
         creditRequest.setPayload(payload);
 
         creditRequest.signByKey(SECRETKEY);
@@ -180,7 +180,7 @@ public class Client {
      * @throws Exception
      */
     private static void apiLinkfaceHsRequest() throws Exception {
-        String LINKFACEHOST = "http://127.0.0.1:8082/linkface/hsVerification";
+        String LINKFACEHOST = "http://ucdevapi.ucredit.erongyun.net/linkface/hsVerification";
 //        String LINKFACEHOST = "http://127.0.0.1:8082/linkface/hsVerification";
 
         long timestamp = new Date().getTime();
